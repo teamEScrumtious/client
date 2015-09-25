@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Food for Thought</string>
+
+    <string name="hello_world">Hello world, we\'re Scrum-tious!</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
+</resources>
