@@ -1,4 +1,4 @@
-package com.example.tjl7.lab1;
+package edu.calvin.cs262.scrumptious;
 
 import android.app.Activity;
 import android.app.SearchManager;
