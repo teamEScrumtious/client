@@ -5,7 +5,7 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "com.example.tjl7.lab1"
+        applicationId "edu.calvin.cs262.scrumptious"
         minSdkVersion 22
         targetSdkVersion 22
         versionCode 1
