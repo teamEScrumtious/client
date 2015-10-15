@@ -8,14 +8,16 @@ import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
-public class MyActivity extends Activity {
+public class MainMenu extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my);
+        setContentView(R.layout.main_menu);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -47,4 +49,10 @@ public class MyActivity extends Activity {
     private void openSettings(){
         startActivity(new Intent(Settings.ACTION_SETTINGS));
     }
+
+    public void startRecipeBookMenu(View view){
+        Intent intent = new Intent(MainMenu.this, RecipeBookMenu.class);
+        startActivity(intent);
+    }
+
 }
