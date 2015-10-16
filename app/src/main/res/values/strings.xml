@@ -8,4 +8,5 @@
     <string name="about">Here you can select recipes from our expansive database to add to your weekly
         meal plan, view a shopping list that includes all ingredients necessary for the week\'s meals,
         and get reminders about when to begin various cooking tasks such as thawing meat, starting crockpots, etc.</string>
+    <string name="title_activity_recipe_book_menu">RecipeBookMenu</string>
 </resources>
