@@ -1,4 +1,4 @@
-Scrumptious:
+#Scrumptious:
 
 This app is for college students and people who desire organization in their kitchen.  People will be able to use this app to plan what meals they will have for the entire week and will be able to view a shopping list that includes all ingredients required for each recipe. College students and housemates in particular can use this app to coordinate who is cooking what for each meal, so that, even though not every student will be able to cook every meal, they will still be able to put together complex meals by combining their strengths.
 
