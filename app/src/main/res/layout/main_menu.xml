@@ -17,33 +17,33 @@
         android:text="@string/about"
         android:id="@+id/textView2"
         android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="57dp" />
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Recipe Book"
         android:id="@+id/recipe_book_button"
+        android:onClick="startRecipeBookMenu"
         android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:onClick="startRecipeBookMenu" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Weekly Plan"
         android:id="@+id/weekly_plan_button"
+        android:onClick="startWeeklyPlanMenu"
         android:layout_below="@+id/recipe_book_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignStart="@+id/recipe_book_button" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Shopping List"
         android:id="@+id/shopping_list_button"
+        android:onClick="startShoppingListMenu"
         android:layout_below="@+id/weekly_plan_button"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignStart="@+id/weekly_plan_button" />
 
 </RelativeLayout>

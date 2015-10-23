@@ -30,6 +30,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.calvin.cs262.scrumptious.MainMenu" />
         </activity>
+        <activity
+            android:name=".ShoppingListMenu"
+            android:label="@string/title_activity_shopping_list_menu"
+            android:parentActivityName=".MainMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.calvin.cs262.scrumptious.MainMenu" />
+        </activity>
+        <activity
+            android:name=".WeeklyPlanMenu"
+            android:label="@string/title_activity_weekly_plan_menu"
+            android:parentActivityName=".MainMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.calvin.cs262.scrumptious.MainMenu" />
+        </activity>
     </application>
 
 </manifest>
