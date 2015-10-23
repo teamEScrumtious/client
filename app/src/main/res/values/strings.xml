@@ -9,4 +9,7 @@
         meal plan, view a shopping list that includes all ingredients necessary for the week\'s meals,
         and get reminders about when to begin various cooking tasks such as thawing meat, starting crockpots, etc.</string>
     <string name="title_activity_recipe_book_menu">RecipeBookMenu</string>
+    <string name="title_activity_weekly_plan_menu">WeeklyPlanMenu</string>
+    <string name="title_activity_shopping_list_menu">ShoppingListMenu</string>
+
 </resources>
