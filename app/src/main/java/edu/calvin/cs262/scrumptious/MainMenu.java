@@ -49,10 +49,19 @@ public class MainMenu extends Activity {
     private void openSettings(){
         startActivity(new Intent(Settings.ACTION_SETTINGS));
     }
-
+//    Go to recipe book activity
     public void startRecipeBookMenu(View view){
         Intent intent = new Intent(MainMenu.this, RecipeBookMenu.class);
         startActivity(intent);
     }
-
+//    go to weekly plan activity
+    public void startWeeklyPlanMenu(View view){
+        Intent intent = new Intent(MainMenu.this, WeeklyPlanMenu.class);
+        startActivity(intent);
+    }
+//    go to shopping list activity
+    public void startShoppingListMenu(View view){
+        Intent intent = new Intent(MainMenu.this, ShoppingListMenu.class);
+        startActivity(intent);
+    }
 }
