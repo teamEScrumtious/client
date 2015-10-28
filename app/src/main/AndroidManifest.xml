@@ -30,6 +30,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.calvin.cs262.scrumptious.MainMenu" />
         </activity>
+        <activity
+            android:name=".RecipeBookListAlphabetical"
+            android:label="@string/title_activity_recipe_book_list_alphabetical"
+            android:parentActivityName=".RecipeBookMenu" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.calvin.cs262.scrumptious.RecipeBookMenu" />
+        </activity>
     </application>
 
 </manifest>
