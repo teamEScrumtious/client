@@ -1,3 +1,11 @@
+/**
+ * WeeklyPlanMenu.java
+ *
+ * Display weekly recipies.. possibly by days or other time periods..
+ *
+ * [UNDER CONSTRUCTION]
+ */
+
 package edu.calvin.cs262.scrumptious;
 
 import android.os.Bundle;
