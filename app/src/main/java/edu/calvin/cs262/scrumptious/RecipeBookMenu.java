@@ -1,3 +1,11 @@
+/**
+ * RecipeBookListAlphabetical.java
+ *
+ * Choose how to view recipies
+ * -alphabetically - RecipeBookListAlphabetical.java
+ *
+ * [UNDER CONSTRUCTION]
+ */
 package edu.calvin.cs262.scrumptious;
 
 import android.app.Activity;
@@ -36,7 +44,7 @@ public class RecipeBookMenu extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-
+//go to Recipe Book List Alphabetical menu, where recipes are listed alphabetically...
     public void startRecipeBookMenu(View view){
         Intent intent = new Intent(RecipeBookMenu.this, RecipeBookListAlphabetical.class);
         startActivity(intent);

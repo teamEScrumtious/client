@@ -1,3 +1,13 @@
+/**
+ * FoodFor Thought Android Application
+ * by Team Scrum-tious
+ * 8/25/15 - November 2015
+ *
+ * Main menu acticity for app
+ * Links to all features and submenus of the app
+ *
+ */
+
 package edu.calvin.cs262.scrumptious;
 
 import android.app.Activity;
@@ -31,9 +41,9 @@ public class MainMenu extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle presses on the action bar items
         switch (item.getItemId()) {
-            case R.id.action_search:
-                openSearch();
-                return true;
+          //  case R.id.action_search:
+          //      openSearch();               //commented out, Prof wanted us to cut out lab stuff
+          //      return true;                  //also commented out openSearch()
             case R.id.action_settings:
                 openSettings();
                 return true;
@@ -42,13 +52,14 @@ public class MainMenu extends Activity {
         }
     }
 
-    private void openSearch(){
-        startActivity(new Intent(SearchManager.INTENT_ACTION_GLOBAL_SEARCH));
-    }
+//    private void openSearch(){
+//        startActivity(new Intent(SearchManager.INTENT_ACTION_GLOBAL_SEARCH));
+//    }
 
     private void openSettings(){
         startActivity(new Intent(Settings.ACTION_SETTINGS));
     }
+
 //    Go to recipe book activity
     public void startRecipeBookMenu(View view){
         Intent intent = new Intent(MainMenu.this, RecipeBookMenu.class);

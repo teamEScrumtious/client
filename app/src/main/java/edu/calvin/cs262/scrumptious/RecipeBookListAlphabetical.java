@@ -1,3 +1,10 @@
+/**
+ * RecipeBookListAlphabetical.java
+ *
+ * display recipies alphabetically
+ *
+ * [UNDER CONSTRUCTION]
+ */
 package edu.calvin.cs262.scrumptious;
 
 import android.app.Activity;
