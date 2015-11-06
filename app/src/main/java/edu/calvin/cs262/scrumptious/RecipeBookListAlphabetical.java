@@ -3,20 +3,23 @@
  *
  * display recipies alphabetically
  *
+ * Used tutorial on https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView
+ *
  * [UNDER CONSTRUCTION]
  */
 package edu.calvin.cs262.scrumptious;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListView;
+
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import android.widget.LinearLayout;
 
 public class RecipeBookListAlphabetical extends Activity {
 
@@ -24,6 +27,36 @@ public class RecipeBookListAlphabetical extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_book_list_alphabetical);
+
+        // Construct the array of ingredients
+        ArrayList<Ingredient> arrayofIngredients = new ArrayList<Ingredient>();
+        arrayofIngredients.add(new Ingredient("Salt", "Spices"));
+        arrayofIngredients.add(new Ingredient("Human Souls", "Spices"));
+        arrayofIngredients.add(new Ingredient("Eye of Newt", "Meats"));
+        arrayofIngredients.add(new Ingredient("Fluxweed", "Spices"));
+        arrayofIngredients.add(new Ingredient("Knotgrass", "Produce"));
+        arrayofIngredients.add(new Ingredient("Lacewing Flies", "Meats"));
+        arrayofIngredients.add(new Ingredient("Leeches", "Meats"));
+        arrayofIngredients.add(new Ingredient("Horn of Bicorn", "Dairy"));
+        arrayofIngredients.add(new Ingredient("Boomslang Skin", "Meats"));
+        arrayofIngredients.add(new Ingredient("Human Hair", "Spices"));
+        arrayofIngredients.add(new Ingredient("Bezoar", "Spices"));
+        arrayofIngredients.add(new Ingredient("Mistletoe Berries", "Spices"));
+        arrayofIngredients.add(new Ingredient("Unicorn Horn", "Spices"));
+        arrayofIngredients.add(new Ingredient("Standard Ingredient", "Spices"));
+        // Construct the array of recipes
+        ArrayList<Recipe> arrayOfRecipes = new ArrayList<Recipe>();
+        ArrayList<IngredientQuantity> immortalityIngredients = new ArrayList<IngredientQuantity>();
+        immortalityIngredients.add(new IngredientQuantity(arrayofIngredients.get(0), "tbsp", 3));
+        immortalityIngredients.add(new IngredientQuantity(arrayofIngredients.get(1), "", 3));
+        immortalityIngredients.add(new IngredientQuantity(arrayofIngredients.get(2), "cup", 3));
+        arrayOfRecipes.add(new Recipe("Immortality", "Throw it into a pot add some black magic and boom... Literally.", immortalityIngredients, true, 2));
+
+        // Create the adapter to convert the array to views
+        RecipeAdapter adapter = new RecipeAdapter(this, arrayOfRecipes);
+        // Attach the adapter to a ListView
+        ListView listView = (ListView) findViewById(R.id.listViewAlphaItems);
+        listView.setAdapter(adapter);
     }
 
     @Override
@@ -47,6 +80,5 @@ public class RecipeBookListAlphabetical extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
 }
