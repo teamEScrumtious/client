@@ -10,11 +10,12 @@
         android:text="Name"
         android:textStyle="bold" />
     <TextView
-        android:id="@+id/tvRecipeServings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Servings"
-        android:textSize="12dp"
-        android:paddingLeft="10dp" />
+    android:id="@+id/tvRecipeServings"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Servings"
+    android:textSize="12dp"
+    android:paddingLeft="10dp" />
+
 
 </LinearLayout>

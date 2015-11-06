@@ -47,10 +47,16 @@ public class RecipeBookListAlphabetical extends Activity {
         // Construct the array of recipes
         ArrayList<Recipe> arrayOfRecipes = new ArrayList<Recipe>();
         ArrayList<IngredientQuantity> immortalityIngredients = new ArrayList<IngredientQuantity>();
+        ArrayList<IngredientQuantity> polyjuiceIngredients = new ArrayList<IngredientQuantity>();
         immortalityIngredients.add(new IngredientQuantity(arrayofIngredients.get(0), "tbsp", 3));
         immortalityIngredients.add(new IngredientQuantity(arrayofIngredients.get(1), "", 3));
         immortalityIngredients.add(new IngredientQuantity(arrayofIngredients.get(2), "cup", 3));
+        polyjuiceIngredients.add(new IngredientQuantity(arrayofIngredients.get(3), "measures", 3));
+        polyjuiceIngredients.add(new IngredientQuantity(arrayofIngredients.get(4), "bundles", 2));
+        polyjuiceIngredients.add(new IngredientQuantity(arrayofIngredients.get(5), "cups", 3));
+        polyjuiceIngredients.add(new IngredientQuantity(arrayofIngredients.get(6), "", 4));
         arrayOfRecipes.add(new Recipe("Immortality", "Throw it into a pot add some black magic and boom... Literally.", immortalityIngredients, true, 2));
+        arrayOfRecipes.add(new Recipe("Polyjuice Potion", "Polyjuice Potion', '1. Add the fluxweed to the cauldron 2. Add the knto grass 3. Stir 3 times clockwise 4. Wave your wand then let the potion brew for 80 minutes 5. Add the leeches, 6. Crush two cups of lacewing flies in a mortar then add, 7. Heat for 30 seconds on low heat.", polyjuiceIngredients, false, 3));
 
         // Create the adapter to convert the array to views
         RecipeAdapter adapter = new RecipeAdapter(this, arrayOfRecipes);
