@@ -5,7 +5,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="edu.calvin.cs262.scrumptious.RecipeBookListAlphabetical">
+    tools:context="edu.calvin.cs262.scrumptious.RecipeBookListAlphabetical"
+    android:background="#96ED89">
 
 
     <ListView
