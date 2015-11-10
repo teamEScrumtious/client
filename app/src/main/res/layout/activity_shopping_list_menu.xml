@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -9,11 +8,9 @@
     tools:context="edu.calvin.cs262.scrumptious.ShoppingListMenu"
     android:background="#96ED89">
 
-    <EditText
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText2"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="Text" />
-</RelativeLayout>
+        android:id="@+id/list"
+        android:layout_weight="1" />
+</LinearLayout>
