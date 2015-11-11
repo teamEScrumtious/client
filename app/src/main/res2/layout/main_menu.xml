@@ -16,8 +16,20 @@
         android:layout_centerHorizontal="true"
         android:textColor="#044C29"
         android:textAlignment="center"
-        android:textSize="48dp" />
+        android:textSize="32dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/about"
+        android:id="@+id/textView2"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:textSize="16dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignEnd="@+id/recipe_book_button"
+        android:layout_above="@+id/recipe_book_button" />
 
     <Button
         android:layout_width="wrap_content"
@@ -29,11 +41,11 @@
         android:textColor="#ffffff"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
         android:layout_above="@+id/weekly_plan_button"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp" />
+        android:layout_margin="5dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -45,11 +57,10 @@
         android:background="#044C29"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
         android:layout_above="@+id/shopping_list_button"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp" />
+        android:layout_margin="5dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -62,11 +73,10 @@
         android:layout_alignEnd="@+id/weekly_plan_button"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp" />
+        android:layout_margin="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -76,19 +86,6 @@
         android:id="@+id/textView3"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:textSize="24dp"
-        android:layout_margin="3dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:src="@drawable/logo_nobkgrd"
-        android:layout_alignEnd="@+id/textView"
-        android:layout_above="@+id/recipe_book_button"
-        android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/textView3"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView3" />
+        android:textSize="24dp" />
 
 </RelativeLayout>
