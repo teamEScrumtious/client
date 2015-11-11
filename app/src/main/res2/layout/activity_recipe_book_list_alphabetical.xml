@@ -10,21 +10,9 @@
 
 
     <ListView
-        android:id="@android:id/list"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listViewAlphaItems"
         android:layout_weight="1"
-        android:fastScrollEnabled="true"
-        android:layout_alignTop="@+id/sideIndex"
-        android:layout_toEndOf="@+id/sideIndex" />
-
-    <LinearLayout
-        android:id="@+id/sideIndex"
-        android:layout_width="40dip"
-        android:layout_height="fill_parent"
-        android:background="#FFF"
-        android:gravity="center_horizontal"
-        android:orientation="vertical" >
-    </LinearLayout>
-
+        android:fastScrollEnabled="true" />
 </LinearLayout>
