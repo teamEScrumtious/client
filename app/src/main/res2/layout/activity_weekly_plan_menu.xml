@@ -9,10 +9,11 @@
     android:focusable="false"
     android:background="#96ED89">
 
-    <ListView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listViewWeeklyPlan"
-        android:layout_weight="1"
-        android:fastScrollEnabled="true" />
+        android:id="@+id/editText"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="WeeklyPlan" />
 </RelativeLayout>
