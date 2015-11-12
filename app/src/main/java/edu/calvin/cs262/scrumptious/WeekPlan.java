@@ -5,7 +5,7 @@ package edu.calvin.cs262.scrumptious;
  */
 public class WeekPlan {
     // Data
-    Day Sunday, Monday, Tueday, Wednesday, Thursday, Friday, Saturday;
+    private Day Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday;
 
     // Constructor
     public WeekPlan() {
@@ -28,12 +28,12 @@ public class WeekPlan {
         Monday = monday;
     }
 
-    public Day getTueday() {
-        return Tueday;
+    public Day getTuesday() {
+        return Tuesday;
     }
 
-    public void setTueday(Day tueday) {
-        Tueday = tueday;
+    public void setTuesday(Day tueday) {
+        Tuesday = tueday;
     }
 
     public Day getWednesday() {

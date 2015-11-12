@@ -11,17 +11,17 @@ import java.util.Date;
 public class Day {
 
     // Data
-    Dish breakfast = null;
-    Dish lunch = null;
-    Dish dinner = null;
-    Date date;
+    private Dish breakfast = null;
+    private Dish lunch = null;
+    private Dish dinner = null;
+    Date date; //should be made private after functions are added for getting full dates, and what day of the week it is
 
     // Constructor
     // Use Calendar.MONTH for the month
-    public Day(int year, int month, int day) {
+    public Day(int month, int day, int year) {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.YEAR, year);
-        cal.set(Calendar.MONTH, Calendar.JANUARY);
+        cal.set(Calendar.MONTH, month);
         cal.set(Calendar.DAY_OF_MONTH, day);
         date = cal.getTime();
     }
