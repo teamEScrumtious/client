@@ -22,7 +22,6 @@ import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.ExpandableListView.OnGroupCollapseListener;
 import android.widget.ExpandableListView.OnGroupExpandListener;
-import android.widget.Toast;
 
 public class WeeklyPlanMenu extends Activity {
 
@@ -34,7 +33,7 @@ public class WeeklyPlanMenu extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.week_plan_list_layout);
+        setContentView(R.layout.activity_weekly_plan_menu);
         //getActionBar().setDisplayHomeAsUpEnabled(true);
 
         // get the listview

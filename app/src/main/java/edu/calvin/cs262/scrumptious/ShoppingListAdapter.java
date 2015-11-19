@@ -12,17 +12,16 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by tjluce on 11/11/15.
- * Uses code based on http://www.androidhive.info/2013/07/android-expandable-list-view-tutorial/
+ * Created by tjluce on 11/18/15.
  */
-public class WeeklyPlanAdapter extends BaseExpandableListAdapter {
+public class ShoppingListAdapter extends BaseExpandableListAdapter {
     private Context _context;
     private List<String> _listDataHeader; // header titles
     // child data in format of header title, child title
     private HashMap<String, List<Dish>> _listDataChild;
 
-    public WeeklyPlanAdapter(Context context, List<String> listDataHeader,
-                                 HashMap<String, List<Dish>> listChildData) {
+    public ShoppingListAdapter(Context context, List<String> listDataHeader,
+                             HashMap<String, List<Dish>> listChildData) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
@@ -49,16 +48,16 @@ public class WeeklyPlanAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.weekly_plan_expand_child, null);
+            convertView = infalInflater.inflate(R.layout.shopping_list_expand_child, null);
         }
 
-        TextView tvRecipeName = (TextView) convertView
-                .findViewById(R.id.tvRecipeName);
-        TextView tvRecipeServings = (TextView) convertView
-                .findViewById(R.id.tvRecipeServings);
+        TextView tvIngredientName = (TextView) convertView
+                .findViewById(R.id.tvIngredientName);
+        TextView tvIngredientQuantity = (TextView) convertView
+                .findViewById(R.id.tvIngredientQuantity);
 
-        tvRecipeName.setText(dish.getRecipe().getName());
-        tvRecipeServings.setText(String.valueOf("Servings: " + dish.getServings()));
+        tvIngredientName.setText(dish.getRecipe().getName());
+        tvIngredientQuantity.setText(String.valueOf("Servings: " + dish.getServings()));
         return convertView;
     }
 
@@ -90,13 +89,13 @@ public class WeeklyPlanAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = infalInflater.inflate(R.layout.weekly_plan_expand_header, null);
+            convertView = infalInflater.inflate(R.layout.shopping_list_expand_header, null);
         }
 
-        TextView lblDayOfWeek = (TextView) convertView
-                .findViewById(R.id.dayOfWeek);
-        lblDayOfWeek.setTypeface(null, Typeface.BOLD);
-        lblDayOfWeek.setText(headerTitle);
+        TextView lblIngredientType = (TextView) convertView
+                .findViewById(R.id.ingredientType);
+        lblIngredientType.setTypeface(null, Typeface.BOLD);
+        lblIngredientType.setText(headerTitle);
 
         return convertView;
     }
