@@ -20,6 +20,7 @@ import java.util.List;
 
 public class ShoppingListMenu extends Activity {
 
+    // Adapter Data
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
@@ -36,6 +37,7 @@ public class ShoppingListMenu extends Activity {
         // preparing list data
         prepareListData();
 
+        // Creates the list adapater
         listAdapter = new ShoppingListAdapter(this, listDataHeader, listDataChild);
 
         // setting list adapter
@@ -126,6 +128,7 @@ public class ShoppingListMenu extends Activity {
                         listDataChild.put(ingredientList.get(k).getIngredient().getType(), new ArrayList<IngredientQuantity>());
                     }
                     // Adds the ingredient to the appropriate list in the child data
+                    // NOTE: We'll have to have an "if contains" statement here, and if it's true, merge the two quantities together
                     listDataChild.get(ingredientList.get(k).getIngredient().getType()).add(ingredientList.get(k));
                 }
             }
