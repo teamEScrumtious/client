@@ -2,8 +2,6 @@
  * ShoppingListMenu.java
  *
  * Displays shopping list, populated by recipies, via check boxes.
- *
- * [UNDER CONSTRUCTION]
  */
 
 package edu.calvin.cs262.scrumptious;
