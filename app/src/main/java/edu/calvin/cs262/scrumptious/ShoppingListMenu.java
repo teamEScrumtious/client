@@ -23,7 +23,7 @@ public class ShoppingListMenu extends Activity {
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
-    HashMap<String, List<Dish>> listDataChild;
+    HashMap<String, List<IngredientQuantity>> listDataChild;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,67 +102,34 @@ public class ShoppingListMenu extends Activity {
      */
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<Dish>>();
+        listDataChild = new HashMap<String, List<IngredientQuantity>>();
         WeekPlan weekPlan = (((Scrumptious)getApplicationContext()).weekPlan);
-        List<Day> listOfTypes = new ArrayList<Day>();
-        listOfTypes.add(weekPlan.getSunday());
-        listOfTypes.add(weekPlan.getMonday());
-        listOfTypes.add(weekPlan.getTuesday());
-        listOfTypes.add(weekPlan.getWednesday());
-        listOfTypes.add(weekPlan.getThursday());
-        listOfTypes.add(weekPlan.getFriday());
-        listOfTypes.add(weekPlan.getSaturday());
 
-        // Adding child data
-        for(int i = 0; i < listOfDays.size(); i++) {
-            listDataHeader.add(listOfDays.get(i).date.toString().substring(0, 10));
+        // Data to be used for looping
+        List<String> listOfTypes = new ArrayList<String>();
+        List<Day> dayList = weekPlan.getDayList();
+        List<Dish> dishList = null;
+        List<IngredientQuantity> ingredientList = null;
+
+        // Loop through every day and find every ingredient, and if it has a new type then add it to the header list
+        for(int i = 0; i < dayList.size(); i++) {
+            dishList = dayList.get(i).getDishList();
+            // Looping through dishes in the current day
+            for(int j = 0; j < dishList.size(); j++) {
+                ingredientList = dishList.get(j).getRecipe().getIngredients();
+                // Looping through ingredients in the current dish
+                for(int k = 0; k < ingredientList.size(); k++) {
+                    // If the type of the ingredient isn't in the header data list yet, add it in
+                    if (!listDataHeader.contains(ingredientList.get(k).getIngredient().getType())) {
+                        listDataHeader.add(ingredientList.get(k).getIngredient().getType());
+                        // Also add in a new arraylist for the child data list to use (corresponds to the list just added for the header data list)
+                        listDataChild.put(ingredientList.get(k).getIngredient().getType(), new ArrayList<IngredientQuantity>());
+                    }
+                    // Adds the ingredient to the appropriate list in the child data
+                    listDataChild.get(ingredientList.get(k).getIngredient().getType()).add(ingredientList.get(k));
+                }
+            }
         }
-
-        // Adding child data
-        List<Dish> sundayDishes = new ArrayList<Dish>();
-        sundayDishes.add(listOfDays.get(0).getBreakfast());
-        sundayDishes.add(listOfDays.get(0).getLunch());
-        sundayDishes.add(listOfDays.get(0).getDinner());
-
-        List<Dish> mondayDishes = new ArrayList<Dish>();
-        mondayDishes.add(listOfDays.get(1).getBreakfast());
-        mondayDishes.add(listOfDays.get(1).getLunch());
-        mondayDishes.add(listOfDays.get(1).getDinner());
-
-        List<Dish> tuesdayDishes = new ArrayList<Dish>();
-        tuesdayDishes.add(listOfDays.get(2).getBreakfast());
-        tuesdayDishes.add(listOfDays.get(2).getLunch());
-        tuesdayDishes.add(listOfDays.get(2).getDinner());
-
-        List<Dish> wednesdayDishes = new ArrayList<Dish>();
-        wednesdayDishes.add(listOfDays.get(3).getBreakfast());
-        wednesdayDishes.add(listOfDays.get(3).getLunch());
-        wednesdayDishes.add(listOfDays.get(3).getDinner());
-
-        List<Dish> thursdayDishes = new ArrayList<Dish>();
-        thursdayDishes.add(listOfDays.get(4).getBreakfast());
-        thursdayDishes.add(listOfDays.get(4).getLunch());
-        thursdayDishes.add(listOfDays.get(4).getDinner());
-
-        List<Dish> fridayDishes = new ArrayList<Dish>();
-        fridayDishes.add(listOfDays.get(5).getBreakfast());
-        fridayDishes.add(listOfDays.get(5).getLunch());
-        fridayDishes.add(listOfDays.get(5).getDinner());
-
-        List<Dish> saturdayDishes = new ArrayList<Dish>();
-        saturdayDishes.add(listOfDays.get(6).getBreakfast());
-        saturdayDishes.add(listOfDays.get(6).getLunch());
-        saturdayDishes.add(listOfDays.get(6).getDinner());
-
-
-
-        listDataChild.put(listDataHeader.get(0), sundayDishes); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), tuesdayDishes); // Header, Child data
-        listDataChild.put(listDataHeader.get(2), wednesdayDishes); // Header, Child data
-        listDataChild.put(listDataHeader.get(3), wednesdayDishes); // Header, Child data
-        listDataChild.put(listDataHeader.get(4), thursdayDishes); // Header, Child data
-        listDataChild.put(listDataHeader.get(5), fridayDishes); // Header, Child data
-        listDataChild.put(listDataHeader.get(6), saturdayDishes); // Header, Child data
     }
 
 }

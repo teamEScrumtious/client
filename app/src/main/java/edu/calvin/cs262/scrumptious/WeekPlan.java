@@ -1,5 +1,8 @@
 package edu.calvin.cs262.scrumptious;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by tjluce on 11/10/15.
  */
@@ -12,6 +15,18 @@ public class WeekPlan {
     }
 
     // Getters and Setters
+    public List<Day> getDayList() {
+        List<Day> dayList = new ArrayList<Day>();
+        dayList.add(Sunday);
+        dayList.add(Monday);
+        dayList.add(Tuesday);
+        dayList.add(Wednesday);
+        dayList.add(Thursday);
+        dayList.add(Friday);
+        dayList.add(Saturday);
+        return dayList;
+    }
+
     public Day getSunday() {
         return Sunday;
     }

@@ -1,7 +1,9 @@
 package edu.calvin.cs262.scrumptious;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by tjluce on 11/10/15.
@@ -14,6 +16,7 @@ public class Day {
     private Dish breakfast = null;
     private Dish lunch = null;
     private Dish dinner = null;
+    private List<Dish> dishes = new ArrayList<Dish>();  //To be used later, until it's made we have a function to return dishes as a list
     Date date; //should be made private after functions are added for getting full dates, and what day of the week it is
 
     // Constructor
@@ -27,6 +30,24 @@ public class Day {
     }
 
     // Getters and Setters
+    public List<Dish> getDishList() {
+        List<Dish> dishList = new ArrayList<Dish>();
+        dishList.add(breakfast);
+        dishList.add(lunch);
+        dishList.add(dinner);
+        return dishList;
+    }
+
+    public void addDish(Dish dish) {
+        dishes.add(dish);
+    }
+
+    public void removeDish(int index) {
+        if (index >= 0 && index < dishes.size()) {
+            dishes.remove(index);
+        }
+    }
+
     public Dish getBreakfast() {
         return breakfast;
     }

@@ -18,10 +18,10 @@ public class ShoppingListAdapter extends BaseExpandableListAdapter {
     private Context _context;
     private List<String> _listDataHeader; // header titles
     // child data in format of header title, child title
-    private HashMap<String, List<Dish>> _listDataChild;
+    private HashMap<String, List<IngredientQuantity>> _listDataChild;
 
     public ShoppingListAdapter(Context context, List<String> listDataHeader,
-                             HashMap<String, List<Dish>> listChildData) {
+                             HashMap<String, List<IngredientQuantity>> listChildData) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
@@ -43,7 +43,7 @@ public class ShoppingListAdapter extends BaseExpandableListAdapter {
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
         //final String childText = (String) getChild(groupPosition, childPosition);
-        Dish dish = (Dish) getChild(groupPosition, childPosition);
+        IngredientQuantity ingredientQuantity = (IngredientQuantity) getChild(groupPosition, childPosition);
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
@@ -56,8 +56,8 @@ public class ShoppingListAdapter extends BaseExpandableListAdapter {
         TextView tvIngredientQuantity = (TextView) convertView
                 .findViewById(R.id.tvIngredientQuantity);
 
-        tvIngredientName.setText(dish.getRecipe().getName());
-        tvIngredientQuantity.setText(String.valueOf("Servings: " + dish.getServings()));
+        tvIngredientName.setText(ingredientQuantity.getIngredient().getName());
+        tvIngredientQuantity.setText(String.valueOf("Quantity: " + ingredientQuantity.getQuantity() + " " + ingredientQuantity.getUnit()));
         return convertView;
     }
 
