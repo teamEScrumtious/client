@@ -13,13 +13,23 @@
     android:gravity="center_horizontal"
     android:orientation="vertical" >
 
-
     <ListView
         android:id="@+id/listViewAlphaItems"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:fastScrollEnabled="true" />
+
+    <ImageButton
+        android:id="@+id/moreImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+
+        android:contentDescription="@string/image_button_delete"
+        android:src="@android:drawable/ic_input_add" />
 
 </LinearLayout>
 
