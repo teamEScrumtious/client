@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Scrumptious!</string>
-
+    <string name="app_name">Scrum-tious!</string>
     <string name="hello_world">Scrum-tious!</string>
     <string name="slogan">Organize your food life.</string>
     <string name="action_settings">Settings</string>
