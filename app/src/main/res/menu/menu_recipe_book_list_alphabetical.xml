@@ -9,5 +9,5 @@
         android:id="@+id/action_add"
         android:icon="@android:drawable/ic_input_add"
         android:title="@string/action_add_recipe"
-        android:showAsAction="never"/>
+        android:showAsAction="ifRoom"/>
 </menu>
