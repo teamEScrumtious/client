@@ -21,3 +21,9 @@ app/build.gradle
 app/build.gradle
 
 build.gradle
+
+.idea/gradle.xml
+
+.idea/vcs.xml
+
+app/app.iml
