@@ -9,7 +9,7 @@
     android:id="@+id/sideIndex"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF"
+    android:background="#C8E8B7"
     android:gravity="center_horizontal"
     android:orientation="vertical" >
 
