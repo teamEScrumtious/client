@@ -1,6 +1,7 @@
 package edu.calvin.cs262.scrumptious;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,7 @@ public class RecipeAdapter extends ArrayAdapter<Recipe> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
         Recipe recipe = getItem(position);
 
@@ -37,7 +38,7 @@ public class RecipeAdapter extends ArrayAdapter<Recipe> {
         // Populate the data into the template view using the data object
         tvRecipeName.setText(recipe.getName());
         tvRecipeServings.setText(String.valueOf("Servings: " + recipe.getServings()));
-
+        
         // Return the completed view to render on screen
         return convertView;
     }
