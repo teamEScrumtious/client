@@ -4,8 +4,10 @@ package edu.calvin.cs262.scrumptious;
  * Created by tjluce on 11/6/15.
  *
  * Represents an Ingredient object.  Data for the object should be retrieved from the SQL database.
+ * Contains the name and type of the ingredient.
  */
 public class Ingredient {
+
     // Data
     private String name;
     private String type;

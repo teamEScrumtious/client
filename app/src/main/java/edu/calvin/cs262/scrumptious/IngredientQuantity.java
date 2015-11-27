@@ -3,10 +3,12 @@ package edu.calvin.cs262.scrumptious;
 /**
  * Created by tjluce on 11/6/15.
  *
- * Represents the relation between an Ingredient and a Recipe.  Contains an Ingredient, and the unit and quantity needed.  Should never be stored as a variable, just in
- * an array in a Recipe object. Data for the object should be retrieved from the SQL database.
+ * Represents the relation between an Ingredient and a Recipe.  Contains an Ingredient, and the unit
+ * and quantity needed.  Should never be stored as a variable, just in an array in a Recipe object.
+ * Data for the object should be retrieved from the SQL database.
  */
 public class IngredientQuantity {
+
     // Data
     private Ingredient ingredient;
     private String unit;
