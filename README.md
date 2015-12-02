@@ -4,4 +4,4 @@ Scrum-tious is an app for people who desire organization in their kitchen.  They
 
 Unlike other apps, which provide individual shopping lists, recipes, reminders, or tips, this app will bring them all together into one convenient location.  The recipe book will be searchable and it will be easy to add a recipe to the weekly meal plan.  There will also be a place to add notes about modifications or cooking tips to a recipe. The reminder feature, which is not found in other cooking apps, will be very helpful for users with busy schedules so that they will not forget when to begin thawing or cooking food. In addition, there will be a shopping list comprising all of the ingredients from the week's recipes.
 
-So whether we've got your support or not, we hope we've provided... Food for Thought.
+So whether we've got your support or not<br> we hope we've provided Food for Thought.
