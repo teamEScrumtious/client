@@ -38,31 +38,41 @@ public class Scrumptious extends Application implements AsyncResponse {
     public WeekPlan weekPlan  = new WeekPlan();
 
     // Set up variables for accessing RESTful web service
-    private static String RECIPES_URI = "http://10.0.2.2:9998/scrumptious/recipes/";
+    private static String SERVER_URI = "http://10.0.2.2:9998/scrumptious/";
+    private static String RECIPES_URI = "recipes/";
     private String webResults = "";
+    private String[] splitWebResults = null;
 
+    // This will receive result fired from async class of onPostExecute(result) method.
     public void processFinish(String output){
-        //this you will received result fired from async class of onPostExecute(result) method.
         webResults = output;
-        //Log.d(Scrumptious.class.getSimpleName(), "Succesfully loaded data from the server into webResults");
     }
 
     public Scrumptious() {
 
-        MyAsyncTask asyncTask =new MyAsyncTask(RECIPES_URI);
+        // Set up the thread that retreives data from the server
+        MyAsyncTask asyncTask =new MyAsyncTask(SERVER_URI + RECIPES_URI);
 
         asyncTask.delegate = this;
+
         // Execute asyncTask and wait for it to return
         try {
-            asyncTask.execute().get(5000, TimeUnit.MILLISECONDS);
+            asyncTask.execute().get();
+            //5000, TimeUnit.MILLISECONDS
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
-        } catch (TimeoutException e) {
-            e.printStackTrace();
+//        } catch (TimeoutException e) {
+//            e.printStackTrace();
         }
 
+        // Loop through list of recipes
+        Log.d(Scrumptious.class.getSimpleName(), "webResults: " + webResults);
+        splitWebResults = webResults.split("\n");
+        for(int i = 0; i > splitWebResults.length; i++) {
+
+        }
 
         // Add to the array of ingredients
         arrayofIngredients.add(new Ingredient("Salt", "Spices"));
@@ -144,7 +154,7 @@ public class Scrumptious extends Application implements AsyncResponse {
         weekPlan.setFriday(testFriday);
         weekPlan.setSaturday(testSaturday);
 
-   }
+    }
 
     // Uses http://stackoverflow.com/questions/12575068/how-to-get-the-result-of-onpostexecute-to-main-activity-because-asynctask-is-a
     private class MyAsyncTask extends AsyncTask<Void, Void, String> {
@@ -192,7 +202,8 @@ public class Scrumptious extends Application implements AsyncResponse {
                 HttpResponse response = httpClient.execute(httpGet, localContext);
                 HttpEntity entity = response.getEntity();
                 text = getASCIIContentFromEntity(entity);
-                Log.d(Scrumptious.class.getSimpleName(), "Recieved data from server.");
+                Log.d(Scrumptious.class.getSimpleName(), "Received data from server at address " + URI);
+                Log.d(Scrumptious.class.getSimpleName(), "Data received is:\n" + text);
             } catch (Exception e) {
                 Log.d(Scrumptious.class.getSimpleName(), "Failed to retrieve data from the server.");
                 return e.getLocalizedMessage();
@@ -205,6 +216,7 @@ public class Scrumptious extends Application implements AsyncResponse {
          *
          * @param results
          */
+        @Override
         protected void onPostExecute(String results) {
             if (results != null) {
                 delegate.processFinish(results);
