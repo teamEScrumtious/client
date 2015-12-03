@@ -41,23 +41,28 @@ public class Scrumptious extends Application implements AsyncResponse<String> {
     private static String SERVER_URI = "http://10.0.2.2:9998/scrumptious/";
     private static String RECIPES_URI = "recipes/";
     private String webResults = "";
-    private String[] splitWebResults = null;
 
     // This will receive result fired from async class of onPostExecute(result) method.
     // This executes after the main thread.
     public void processFinish(String output){
-        webResults = output;
 
-        // Loop through list of recipes
+        webResults = output;
         Log.d(Scrumptious.class.getSimpleName(), "webResults: " + webResults);
+
+        // Split the server data's individual lines into separate strings
+        String[] splitWebResults = null;
         splitWebResults = webResults.split("\n");
+
+        // Loop through each line of server data
         for(int i = 0; i < splitWebResults.length; i++) {
-            String[] numberSplitWebResults;
-            numberSplitWebResults = splitWebResults[i].split("^\\d+$");
+            String[] numberSplitWebResults = null;
+
             Log.d(Scrumptious.class.getSimpleName(), "splitWebResults: " + splitWebResults[i]);
-            for(int j = 0; j < numberSplitWebResults.length; j++) {
-                Log.d(Scrumptious.class.getSimpleName(), "numberSplitWebResults: " + numberSplitWebResults[j]);
-            }
+
+            // Get only the number of the recipe (it should be at an index of 0
+            // Note: Testing for numbers with more than 1 digits have not happened yet
+            numberSplitWebResults = splitWebResults[i].split("\\D");
+            Log.d(Scrumptious.class.getSimpleName(), "numberSplitWebResults: " + numberSplitWebResults[0]);
         }
     }
 
@@ -70,14 +75,13 @@ public class Scrumptious extends Application implements AsyncResponse<String> {
 
         // Execute asyncTask and wait for it to return
         try {
-            asyncTask.execute().get();
-            //5000, TimeUnit.MILLISECONDS
+            asyncTask.execute().get(5000, TimeUnit.MILLISECONDS);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
-//        } catch (TimeoutException e) {
-//            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
         }
 
         // Add to the array of ingredients
