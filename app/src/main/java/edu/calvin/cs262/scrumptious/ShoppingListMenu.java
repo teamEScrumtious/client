@@ -106,10 +106,9 @@ public class ShoppingListMenu extends Activity {
         WeekPlan weekPlan = (((Scrumptious)getApplicationContext()).weekPlan);
 
         // Data to be used for looping
-        List<String> listOfTypes = new ArrayList<String>();
         List<Day> dayList = weekPlan.getDayList();
-        List<Dish> dishList = null;
-        List<IngredientQuantity> ingredientList = null;
+        List<Dish> dishList;
+        List<IngredientQuantity> ingredientList;
 
         // Loop through every day and find every ingredient, and if it has a new type then add it to the header list
         for(int i = 0; i < dayList.size(); i++) {
@@ -119,18 +118,37 @@ public class ShoppingListMenu extends Activity {
                 ingredientList = dishList.get(j).getRecipe().getIngredients();
                 // Looping through ingredients in the current dish
                 for(int k = 0; k < ingredientList.size(); k++) {
-                    // If the type of the ingredient isn't in the header data list yet, add it in
-                    if (!listDataHeader.contains(ingredientList.get(k).getIngredient().getType())) {
+                    //if the ingredient type matches any current categories ("listDataHeader" or alternatively "listDataChild.containsKey")
+                    if (listDataChild.containsKey(ingredientList.get(k).getIngredient().getType())){
+                        //and if that category contains any ingredients with the same name
+                        if (listDataChild.get(ingredientList.get(k).getIngredient().getType()).contains(ingredientList.get(k).getIngredient().getName() )) {
+                            //combine the ingredients
+                            //UNDER CONSTRUCTION, never gets called. The above if statement doesn't work properly.
+                        } else{
+                            //The category existed but there were no matching ingredients by that name, so make a new one.
+                            listDataChild.get(ingredientList.get(k).getIngredient().getType()).add(ingredientList.get(k));
+                        }
+                    } else {
+                        //No category matches the current ingredient type, so make a new category and add the ingredient to it.
                         listDataHeader.add(ingredientList.get(k).getIngredient().getType());
                         // Also add in a new arraylist for the child data list to use (corresponds to the list just added for the header data list)
                         listDataChild.put(ingredientList.get(k).getIngredient().getType(), new ArrayList<IngredientQuantity>());
+                        listDataChild.get(ingredientList.get(k).getIngredient().getType()).add(ingredientList.get(k));
                     }
-                    // Adds the ingredient to the appropriate list in the child data
-                    // NOTE: We'll have to have an "if contains" statement here, and if it's true, merge the two quantities together
-                    listDataChild.get(ingredientList.get(k).getIngredient().getType()).add(ingredientList.get(k));
+
                 }
             }
         }
     }
 
 }
+/**
+ // If the type of the ingredient isn't in the header data list yet, add it in
+
+ if (!listDataHeader.contains(ingredientList.get(k).getIngredient().getType())) {
+ listDataHeader.add(ingredientList.get(k).getIngredient().getType());
+ // Also add in a new arraylist for the child data list to use (corresponds to the list just added for the header data list)
+ listDataChild.put(ingredientList.get(k).getIngredient().getType(), new ArrayList<IngredientQuantity>());
+ }
+
+ **/
