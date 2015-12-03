@@ -28,7 +28,7 @@ import java.util.concurrent.TimeoutException;
 /**
  * Created by tjluce on 11/9/15.
  */
-public class Scrumptious extends Application implements AsyncResponse {
+public class Scrumptious extends Application implements AsyncResponse<String> {
 
     // Create the global arrays of objects
     public ArrayList<Ingredient> arrayofIngredients = new ArrayList<Ingredient>();
@@ -44,8 +44,21 @@ public class Scrumptious extends Application implements AsyncResponse {
     private String[] splitWebResults = null;
 
     // This will receive result fired from async class of onPostExecute(result) method.
+    // This executes after the main thread.
     public void processFinish(String output){
         webResults = output;
+
+        // Loop through list of recipes
+        Log.d(Scrumptious.class.getSimpleName(), "webResults: " + webResults);
+        splitWebResults = webResults.split("\n");
+        for(int i = 0; i < splitWebResults.length; i++) {
+            String[] numberSplitWebResults;
+            numberSplitWebResults = splitWebResults[i].split("^\\d+$");
+            Log.d(Scrumptious.class.getSimpleName(), "splitWebResults: " + splitWebResults[i]);
+            for(int j = 0; j < numberSplitWebResults.length; j++) {
+                Log.d(Scrumptious.class.getSimpleName(), "numberSplitWebResults: " + numberSplitWebResults[j]);
+            }
+        }
     }
 
     public Scrumptious() {
@@ -65,13 +78,6 @@ public class Scrumptious extends Application implements AsyncResponse {
             e.printStackTrace();
 //        } catch (TimeoutException e) {
 //            e.printStackTrace();
-        }
-
-        // Loop through list of recipes
-        Log.d(Scrumptious.class.getSimpleName(), "webResults: " + webResults);
-        splitWebResults = webResults.split("\n");
-        for(int i = 0; i > splitWebResults.length; i++) {
-
         }
 
         // Add to the array of ingredients
@@ -218,6 +224,7 @@ public class Scrumptious extends Application implements AsyncResponse {
          */
         @Override
         protected void onPostExecute(String results) {
+            super.onPostExecute(results);
             if (results != null) {
                 delegate.processFinish(results);
             } else {
