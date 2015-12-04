@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="edu.calvin.cs262.scrumptious.RecipeBookListAlphabetical">
+    tools:context="edu.calvin.cs262.scrumptious.WeeklyPlanMenu">
     <!--
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" android:showAsAction="never" />
@@ -8,6 +9,6 @@
     <item
         android:id="@+id/action_add"
         android:icon="@android:drawable/ic_input_add"
-        android:title="@string/action_add_recipe"
+        android:title="@string/action_add_meal"
         android:showAsAction="ifRoom"/>
 </menu>

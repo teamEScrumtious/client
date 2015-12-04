@@ -29,36 +29,37 @@ public class MainMenu extends Activity {
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_my, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+    // Commented out to get rid of settings image
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.menu_my, menu);
+//        return super.onCreateOptionsMenu(menu);
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle presses on the action bar items
-        switch (item.getItemId()) {
-          //  case R.id.action_search:
-          //      openSearch();               //commented out, Prof wanted us to cut out lab stuff
-          //      return true;                  //also commented out openSearch()
-            case R.id.action_settings:
-                openSettings();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle presses on the action bar items
+//        switch (item.getItemId()) {
+//          //  case R.id.action_search:
+//          //      openSearch();               //commented out, Prof wanted us to cut out lab stuff
+//          //      return true;                  //also commented out openSearch()
+//            case R.id.action_settings:
+//                openSettings();
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
 
 //    private void openSearch(){
 //        startActivity(new Intent(SearchManager.INTENT_ACTION_GLOBAL_SEARCH));
 //    }
 
-    private void openSettings(){
-        startActivity(new Intent(Settings.ACTION_SETTINGS));
-    }
+//    private void openSettings(){
+//        startActivity(new Intent(Settings.ACTION_SETTINGS));
+//    }
 
 //    Go to recipe book activity
     public void startRecipeBookMenu(View view){

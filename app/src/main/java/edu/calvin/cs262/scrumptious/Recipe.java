@@ -16,7 +16,6 @@ public class Recipe {
     private String instructions;
     private boolean bookmarked;
     private int servings;
-
     private ArrayList<String> notes = new ArrayList<String>();
 
     // Constructor

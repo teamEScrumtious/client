@@ -13,13 +13,13 @@
     android:gravity="center_horizontal"
     android:orientation="vertical" >
 
-
     <ListView
         android:id="@+id/listViewAlphaItems"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:fastScrollEnabled="true" />
+        android:fastScrollEnabled="true"
+        android:clickable="true" />
 
 </LinearLayout>
 
