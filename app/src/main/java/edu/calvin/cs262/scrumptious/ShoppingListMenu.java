@@ -118,12 +118,27 @@ public class ShoppingListMenu extends Activity {
                 ingredientList = dishList.get(j).getRecipe().getIngredients();
                 // Looping through ingredients in the current dish
                 for(int k = 0; k < ingredientList.size(); k++) {
+
                     //if the ingredient type matches any current categories ("listDataHeader" or alternatively "listDataChild.containsKey")
                     if (listDataChild.containsKey(ingredientList.get(k).getIngredient().getType())){
+
+                        // Variables for determining if ingredient with same name has been added yet
+                        List<IngredientQuantity> typeIngredientList = listDataChild.get(ingredientList.get(k).getIngredient().getType());
+                        boolean ingredientExists = false;
+
+                        // Loop through copy of the ingredientList corresponding to a type in listDataChild to see if it contains an ingredient with the same name
+                        for( int n = 0; n < typeIngredientList.size(); n++){
+                            if(typeIngredientList.get(n).getIngredient().getName().equals(ingredientList.get(k).getIngredient().getName())) {
+                                ingredientExists = true;
+                                break;
+                            }
+                        }
+
                         //and if that category contains any ingredients with the same name
-                        if (listDataChild.get(ingredientList.get(k).getIngredient().getType()).contains(ingredientList.get(k).getIngredient().getName() )) {
+                        if (ingredientExists) {
                             //combine the ingredients
-                            //UNDER CONSTRUCTION, never gets called. The above if statement doesn't work properly.
+                            //UNDER CONSTRUCTION, needs to combine the ingredients
+                            listDataChild.get(ingredientList.get(k).getIngredient().getType()).add(ingredientList.get(k));
                         } else{
                             //The category existed but there were no matching ingredients by that name, so make a new one.
                             listDataChild.get(ingredientList.get(k).getIngredient().getType()).add(ingredientList.get(k));
@@ -142,13 +157,3 @@ public class ShoppingListMenu extends Activity {
     }
 
 }
-/**
- // If the type of the ingredient isn't in the header data list yet, add it in
-
- if (!listDataHeader.contains(ingredientList.get(k).getIngredient().getType())) {
- listDataHeader.add(ingredientList.get(k).getIngredient().getType());
- // Also add in a new arraylist for the child data list to use (corresponds to the list just added for the header data list)
- listDataChild.put(ingredientList.get(k).getIngredient().getType(), new ArrayList<IngredientQuantity>());
- }
-
- **/
