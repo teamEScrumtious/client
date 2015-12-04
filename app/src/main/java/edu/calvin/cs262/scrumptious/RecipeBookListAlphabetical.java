@@ -1,11 +1,10 @@
 /**
  * RecipeBookListAlphabetical.java
  *
- * display recipies alphabetically
+ * Displays all available Recipes in alphabetical order in a list.  Uses RecipeAdapter to adapt
+ * the Recipe array to a ListView
  *
  * Used tutorial on https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView
- *
- * [UNDER CONSTRUCTION]
  */
 package edu.calvin.cs262.scrumptious;
 

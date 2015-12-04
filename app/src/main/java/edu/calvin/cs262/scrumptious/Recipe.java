@@ -4,11 +4,14 @@ import java.util.ArrayList;
 
 /**
  * Created by tjluce on 11/4/15.
- * Based on tutorial at http://www.softwarepassion.com/android-series-custom-listview-items-and-adapters/
- *
  * Represents a Recipe object.  Data for the object should be retrieved from the SQL database.
+ * Contains a name, a list of ingredients, cooking instructions, serving size, and whether or not
+ * it is bookmarked.
+ *
+ * Based on tutorial at http://www.softwarepassion.com/android-series-custom-listview-items-and-adapters/
  */
 public class Recipe {
+
     // Data
     private String recipeName;
     //private String recipeType;
