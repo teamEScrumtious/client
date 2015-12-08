@@ -23,13 +23,13 @@
         android:textStyle="bold"
         android:textAllCaps="false"
         android:padding="0dp"
-        android:layout_below="@+id/textView4"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="110dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_alignLeft="@+id/textView2"
-        android:layout_marginBottom="5dp" />
+        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/textView2" />
 
     <Button
         android:layout_width="wrap_content"
@@ -75,7 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Scrum-tious!"
+        android:text="Recipe Book"
         android:id="@+id/textView2"
         android:textSize="48dp"
         android:layout_alignParentTop="true"
@@ -83,33 +83,5 @@
         android:textStyle="bold"
         android:layout_marginTop="10dp"
         android:textColor="#0E400E" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Recipe Book"
-        android:id="@+id/textView4"
-        android:textAlignment="center"
-        android:textColor="#E09826"
-        android:textSize="36dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="60dp"
-        android:textStyle="bold"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/slogan"
-        android:id="@+id/textView5"
-        android:textSize="24dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
