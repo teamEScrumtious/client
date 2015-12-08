@@ -10,19 +10,27 @@
         android:text="Recipe Name"
         android:id="@+id/tvRecipeName"
         android:textStyle="bold"
-        android:textColor="#000000" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Recipe Instructions"
-        android:id="@+id/tvRecipeInstructions"
-        android:textColor="#000000" />
+        android:textColor="#000000"
+        android:textSize="36dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="15dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Recipe Servings"
         android:id="@+id/tvRecipeServings"
-        android:textColor="#000000" />
+        android:textColor="#000000"
+        android:paddingLeft="20dp"
+        android:paddingTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recipe Instructions"
+        android:id="@+id/tvRecipeInstructions"
+        android:textColor="#000000"
+        android:textSize="24dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="5dp" />
 </LinearLayout>

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="AppTheme" parent="android:Theme.Material.Light">
+        <item name="android:colorBackground">@color/dark_green</item>
+    </style>
+    <style name="ActionBar" parent="android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/green</item>
     </style>
 </resources>
