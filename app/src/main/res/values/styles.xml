@@ -3,7 +3,6 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <item name="android:colorBackground">@color/dark_green</item>
-        <item name="android:background">@color/dark_green</item>
     </style>
 
 </resources>
