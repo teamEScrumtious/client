@@ -1,12 +1,13 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:layout_height="match_parent" android:paddingLeft="0dp"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="edu.calvin.cs262.scrumptious.RecipeBookMenu"
-    android:background="#BDD684">
+    android:background="#BDD684"
+    android:clickable="false">
 
     <Button
         android:layout_width="wrap_content"
@@ -18,15 +19,17 @@
         android:textColor="#F6FFE0"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_above="@+id/button3"
-        android:layout_alignStart="@+id/button3"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
         android:textSize="21dp"
         android:textStyle="bold"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:padding="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="110dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/textView2" />
 
     <Button
         android:layout_width="wrap_content"
@@ -37,15 +40,16 @@
         android:textColor="#F6FFE0"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
+        android:textStyle="bold"
+        android:textSize="21dp"
+        android:textAllCaps="false"
+        android:padding="0dp"
         android:layout_below="@+id/button3"
-        android:layout_alignStart="@+id/button3"
+        android:layout_alignStart="@+id/textView2"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:textStyle="bold"
-        android:textSize="21dp"
-        android:textAllCaps="false"/>
+        android:layout_marginBottom="10dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -56,25 +60,28 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:text="Recent"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
         android:textStyle="bold"
         android:textSize="21dp"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:padding="0dp"
+        android:layout_below="@+id/button"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Scrum-tious!"
+        android:text="Recipe Book"
         android:id="@+id/textView2"
         android:textSize="48dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:textColor="#0E400E" />
 
 </RelativeLayout>
