@@ -1,5 +1,7 @@
 package edu.calvin.cs262.scrumptious;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -11,11 +13,13 @@ public class Dish {
     // Data
     Recipe recipe = null;
     int servings;
+    Calendar date = Calendar.getInstance();
 
     // Constructor
-    public Dish(Recipe newRecipe, int newServings) {
+    public Dish(Recipe newRecipe, int newServings, String date) {
         recipe = newRecipe;
         servings = newServings;
+        Timestamp timestamp = new Timestamp(date);
     }
 
     // Getter and Setters

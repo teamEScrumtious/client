@@ -39,7 +39,7 @@ public class Scrumptious extends Application implements AsyncResponse<String> {
 
     // Set up variables for accessing RESTful web service
     private static String SERVER_URI = "http://10.0.2.2:9998/scrumptious/";
-    private static String RECIPES_URI = "recipes/";
+    private static String DATA_URI = "recipes/weekplan/";
     private String webResults = "";
 
     // This will receive result fired from async class of onPostExecute(result) method.
@@ -53,6 +53,8 @@ public class Scrumptious extends Application implements AsyncResponse<String> {
         String[] splitWebResults = null;
         splitWebResults = webResults.split("\n");
 
+        // Create a new variable to be used for making dishes
+
         // Loop through each line of server data
         for(int i = 0; i < splitWebResults.length; i++) {
             String[] numberSplitWebResults = null;
@@ -62,14 +64,14 @@ public class Scrumptious extends Application implements AsyncResponse<String> {
             // Get only the number of the recipe (it should be at an index of 0
             // Note: Testing for numbers with more than 1 digits have not happened yet
             numberSplitWebResults = splitWebResults[i].split("\\D");
-            Log.d(Scrumptious.class.getSimpleName(), "numberSplitWebResults: " + numberSplitWebResults[0]);
+            //Log.d(Scrumptious.class.getSimpleName(), "numberSplitWebResults: " + numberSplitWebResults[0]);
         }
     }
 
     public Scrumptious() {
 
         // Set up the thread that retreives data from the server
-        MyAsyncTask asyncTask =new MyAsyncTask(SERVER_URI + RECIPES_URI);
+        MyAsyncTask asyncTask =new MyAsyncTask(SERVER_URI + DATA_URI);
 
         asyncTask.delegate = this;
 
