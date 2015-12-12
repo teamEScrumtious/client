@@ -125,11 +125,17 @@ public class ShoppingListMenu extends Activity {
                         // Variables for determining if ingredient with same name has been added yet
                         List<IngredientQuantity> typeIngredientList = listDataChild.get(ingredientList.get(k).getIngredient().getType());
                         boolean ingredientExists = false;
+                        double ingredientQuantityTempA = 0.0;
+                        double ingredientQuantityTempB = 0.0;
+
 
                         // Loop through copy of the ingredientList corresponding to a type in listDataChild to see if it contains an ingredient with the same name
+                        //if this method just used listDatachild, then I would know which child we are looking at. Then I would know which child to add to.
                         for( int n = 0; n < typeIngredientList.size(); n++){
                             if(typeIngredientList.get(n).getIngredient().getName().equals(ingredientList.get(k).getIngredient().getName())) {
                                 ingredientExists = true;
+                                ingredientQuantityTempA = ingredientList.get(k).getQuantity();
+                                ingredientQuantityTempB = listDataChild.get(ingredientList.get(k).getIngredient().getType()).get(n).getQuantity();
                                 break;
                             }
                         }
@@ -137,8 +143,8 @@ public class ShoppingListMenu extends Activity {
                         //and if that category contains any ingredients with the same name
                         if (ingredientExists) {
                             //combine the ingredients
-                            //UNDER CONSTRUCTION, needs to combine the ingredients
-                            listDataChild.get(ingredientList.get(k).getIngredient().getType()).add(ingredientList.get(k));
+                            listDataChild.get(ingredientList.get(k).getIngredient().getType()).get(k).setQuantity(ingredientQuantityTempA + ingredientQuantityTempB);
+
                         } else{
                             //The category existed but there were no matching ingredients by that name, so make a new one.
                             listDataChild.get(ingredientList.get(k).getIngredient().getType()).add(ingredientList.get(k));
