@@ -9,5 +9,6 @@
         android:layout_height="wrap_content"
         android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Day" />
+        android:text="Day"
+        android:padding="25dp" />
 </LinearLayout>
