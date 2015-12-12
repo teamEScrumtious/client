@@ -34,7 +34,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bookmarks"
+        android:text="Bookmarked"
         android:id="@+id/button2"
         android:background="#0A300A"
         android:textColor="#F6FFE0"

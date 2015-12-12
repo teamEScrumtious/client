@@ -10,6 +10,7 @@ import android.widget.TextView;
  * Created by tjluce on 11/23/15.
  *
  * NOTE: Do we want the ability to bookmark the recipe from in here too?
+ * Yes, I added a checkbox so can you make it bookmark a recipe? - Lia
  */
 public class DisplayRecipe extends Activity {
     @Override
@@ -27,8 +28,10 @@ public class DisplayRecipe extends Activity {
         TextView tvRecipeName = (TextView) findViewById(R.id.tvRecipeName);
         TextView tvRecipeInstructions = (TextView) findViewById(R.id.tvRecipeInstructions);
         TextView tvRecipeServings = (TextView) findViewById(R.id.tvRecipeServings);
+        TextView tvRecipeIngredients = (TextView) findViewById(R.id.tvRecipeIngredients);
         tvRecipeName.setText(recipeName);
-        tvRecipeInstructions.setText("Instructions: " + recipeInstructions);
+        tvRecipeIngredients.setText("Ingredients: \n");
+        tvRecipeInstructions.setText("Instructions: \n" + recipeInstructions);
         tvRecipeServings.setText(String.valueOf("Servings: " + recipeServings));
     }
 }
