@@ -109,7 +109,7 @@ public class Scrumptious extends Application implements AsyncResponse<String> {
         polyjuiceIngredients.add(new IngredientQuantity(arrayofIngredients.get(5), "cups", 3));
         polyjuiceIngredients.add(new IngredientQuantity(arrayofIngredients.get(6), "", 4));
         arrayOfRecipes.add(new Recipe("Immortality", "Throw it into a pot add some black magic and boom... Literally.", immortalityIngredients, true, 2));
-        arrayOfRecipes.add(new Recipe("Polyjuice Potion", "1. Add the fluxweed to the cauldron 2. Add the knot grass 3. Stir 3 times clockwise 4. Wave your wand then let the potion brew for 80 minutes 5. Add the leeches, 6. Crush two cups of lacewing flies in a mortar then add, 7. Heat for 30 seconds on low heat.", polyjuiceIngredients, false, 3));
+        arrayOfRecipes.add(new Recipe("Polyjuice Potion", "1. Add the fluxweed to the cauldron \n2. Add the knot grass \n3. Stir 3 times clockwise \n4. Wave your wand then let the potion brew for 80 minutes \n5. Add the leeches \n6. Crush two cups of lacewing flies in a mortar then add \n7. Heat for 30 seconds on low heat.", polyjuiceIngredients, false, 3));
 
         // Create some test dishes
         Dish testDish1 = new Dish(arrayOfRecipes.get(0), 4);
@@ -120,37 +120,37 @@ public class Scrumptious extends Application implements AsyncResponse<String> {
         Dish testDish6 = new Dish(arrayOfRecipes.get(1), 5);
 
         // Create some test days
-        Day testSunday = new Day(Calendar.NOVEMBER, 15, 2015);
+        Day testSunday = new Day(Calendar.DECEMBER, 13, 2015);
         testSunday.setBreakfast(testDish1);
         testSunday.setLunch(testDish2);
         testSunday.setDinner(testDish3);
 
-        Day testMonday = new Day(Calendar.NOVEMBER, 16, 2015);
+        Day testMonday = new Day(Calendar.DECEMBER, 14, 2015);
         testMonday.setBreakfast(testDish4);
         testMonday.setLunch(testDish5);
         testMonday.setDinner(testDish6);
 
-        Day testTuesday = new Day(Calendar.NOVEMBER, 17, 2015);
+        Day testTuesday = new Day(Calendar.DECEMBER, 15, 2015);
         testTuesday.setBreakfast(testDish1);
         testTuesday.setLunch(testDish3);
         testTuesday.setDinner(testDish5);
 
-        Day testWednesday = new Day(Calendar.NOVEMBER, 18, 2015);
+        Day testWednesday = new Day(Calendar.DECEMBER, 16, 2015);
         testWednesday.setBreakfast(testDish2);
         testWednesday.setLunch(testDish4);
         testWednesday.setDinner(testDish6);
 
-        Day testThursday = new Day(Calendar.NOVEMBER, 19, 2015);
+        Day testThursday = new Day(Calendar.DECEMBER, 17, 2015);
         testThursday.setBreakfast(testDish1);
         testThursday.setLunch(testDish5);
         testThursday.setDinner(testDish1);
 
-        Day testFriday = new Day(Calendar.NOVEMBER, 20, 2015);
+        Day testFriday = new Day(Calendar.DECEMBER, 18, 2015);
         testFriday.setBreakfast(testDish4);
         testFriday.setLunch(testDish4);
         testFriday.setDinner(testDish4);
 
-        Day testSaturday = new Day(Calendar.NOVEMBER, 21, 2015);
+        Day testSaturday = new Day(Calendar.DECEMBER, 19, 2015);
         testSaturday.setBreakfast(testDish5);
         testSaturday.setLunch(testDish3);
         testSaturday.setDinner(testDish2);
