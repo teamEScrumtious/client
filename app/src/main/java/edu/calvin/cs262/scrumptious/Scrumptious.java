@@ -1,5 +1,6 @@
 package edu.calvin.cs262.scrumptious;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Application;
 import android.os.AsyncTask;
@@ -53,10 +54,50 @@ public class Scrumptious extends Application implements AsyncResponse<String> {
         String[] splitWebResults = null;
         splitWebResults = webResults.split("\n");
 
-        // Create a new variable to be used for making dishes
+        // Create new variables to be used for making dishes
+        Dish newDish;
+        int dishID = -1;
+        int dishServings = -1;
+        String dishTimestamp = null;
+        int recipeID = -1;
+        String recipeName = null;
+        int recipeServings = -1;
+        String prepInstructions = null;
+        String note = null;
+        boolean recipeBookmarked = false;
+        boolean dishRecipeRead = false;
 
         // Loop through each line of server data
         for(int i = 0; i < splitWebResults.length; i++) {
+
+            // Check if still reading in inital recipe data
+            if (!dishRecipeRead) {
+                // If still reading, check which one to read in next and do it
+                if (dishID == -1) {
+                    dishID = Integer.valueOf(splitWebResults[i]);
+                } else if (dishServings == -1) {
+                    dishServings = Integer.valueOf(splitWebResults[i]);
+                } else if (dishTimestamp == null) {
+                    dishTimestamp = splitWebResults[i];
+                } else if (recipeID == -1) {
+                    recipeID = Integer.valueOf(splitWebResults[i]);
+                } else if (recipeName == null) {
+                    recipeName = splitWebResults[i];
+                } else if (recipeServings == -1) {
+                    recipeServings = Integer.valueOf(splitWebResults[i]);
+                } else if (prepInstructions == null) {
+                    prepInstructions = splitWebResults[i];
+                } else if (note == null) {
+                    note = splitWebResults[i];
+                } else {
+                    recipeBookmarked = Boolean.valueOf(splitWebResults[i]);
+                    dishRecipeRead = true;
+                }
+            } else {
+                
+            }
+
+
             String[] numberSplitWebResults = null;
 
             Log.d(Scrumptious.class.getSimpleName(), "splitWebResults: " + splitWebResults[i]);
@@ -77,7 +118,7 @@ public class Scrumptious extends Application implements AsyncResponse<String> {
 
         // Execute asyncTask and wait for it to return
         try {
-            asyncTask.execute().get(5000, TimeUnit.MILLISECONDS);
+            asyncTask.execute().get(5000, TimeUnit.MILLISECONDS); // Changes this to no timer?
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -114,12 +155,12 @@ public class Scrumptious extends Application implements AsyncResponse<String> {
         arrayOfRecipes.add(new Recipe("Polyjuice Potion", "1. Add the fluxweed to the cauldron 2. Add the knot grass 3. Stir 3 times clockwise 4. Wave your wand then let the potion brew for 80 minutes 5. Add the leeches, 6. Crush two cups of lacewing flies in a mortar then add, 7. Heat for 30 seconds on low heat.", polyjuiceIngredients, false, 3));
 
         // Create some test dishes
-        Dish testDish1 = new Dish(arrayOfRecipes.get(0), 4);
-        Dish testDish2 = new Dish(arrayOfRecipes.get(0), 2);
-        Dish testDish3 = new Dish(arrayOfRecipes.get(0), 1);
-        Dish testDish4 = new Dish(arrayOfRecipes.get(1), 8);
-        Dish testDish5 = new Dish(arrayOfRecipes.get(1), 2);
-        Dish testDish6 = new Dish(arrayOfRecipes.get(1), 5);
+        Dish testDish1 = new Dish(arrayOfRecipes.get(0), 4, "2015-12-15 08:00:00.0");
+        Dish testDish2 = new Dish(arrayOfRecipes.get(0), 2, "2015-12-16 08:00:00.0");
+        Dish testDish3 = new Dish(arrayOfRecipes.get(0), 1, "2015-12-17 08:00:00.0");
+        Dish testDish4 = new Dish(arrayOfRecipes.get(1), 8, "2015-12-18 08:00:00.0");
+        Dish testDish5 = new Dish(arrayOfRecipes.get(1), 2, "2015-12-19 08:00:00.0");
+        Dish testDish6 = new Dish(arrayOfRecipes.get(1), 5, "2015-12-20 08:00:00.0");
 
         // Create some test days
         Day testSunday = new Day(Calendar.NOVEMBER, 15, 2015);

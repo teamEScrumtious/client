@@ -10,6 +10,7 @@
 
 package edu.calvin.cs262.scrumptious;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Intent;
@@ -26,6 +27,10 @@ public class MainMenu extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu);
+
+        // Change the title
+        ActionBar ab = getActionBar();
+        ab.setTitle("");
     }
 
 

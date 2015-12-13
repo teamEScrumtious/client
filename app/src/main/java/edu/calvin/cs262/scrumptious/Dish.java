@@ -1,6 +1,9 @@
 package edu.calvin.cs262.scrumptious;
 
+import android.util.Log;
+
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -16,10 +19,16 @@ public class Dish {
     Calendar date = Calendar.getInstance();
 
     // Constructor
-    public Dish(Recipe newRecipe, int newServings, String date) {
+    public Dish(Recipe newRecipe, int newServings, String date ) {
         recipe = newRecipe;
         servings = newServings;
-        Timestamp timestamp = new Timestamp(date);
+        try{
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+            Date parsedDate = dateFormat.parse(date);
+            Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
+        }catch(Exception e){
+            Log.d(Scrumptious.class.getSimpleName(), e.toString());
+        }
     }
 
     // Getter and Setters
