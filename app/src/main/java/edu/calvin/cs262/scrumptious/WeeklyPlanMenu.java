@@ -139,13 +139,13 @@ public class WeeklyPlanMenu extends Activity {
         listDataChild = new HashMap<String, List<Dish>>();
         WeekPlan weekPlan = (((Scrumptious)getApplicationContext()).weekPlan);
         List<Day> listOfDays = new ArrayList<Day>();
-        listOfDays.add(weekPlan.getSunday());
-        listOfDays.add(weekPlan.getMonday());
-        listOfDays.add(weekPlan.getTuesday());
-        listOfDays.add(weekPlan.getWednesday());
-        listOfDays.add(weekPlan.getThursday());
-        listOfDays.add(weekPlan.getFriday());
-        listOfDays.add(weekPlan.getSaturday());
+        listOfDays.add(weekPlan.getDay(0));
+        listOfDays.add(weekPlan.getDay(1));
+        listOfDays.add(weekPlan.getDay(2));
+        listOfDays.add(weekPlan.getDay(3));
+        listOfDays.add(weekPlan.getDay(4));
+        listOfDays.add(weekPlan.getDay(5));
+        listOfDays.add(weekPlan.getDay(6));
 
         // Adding child data
         for(int i = 0; i < listOfDays.size(); i++) {
@@ -154,45 +154,47 @@ public class WeeklyPlanMenu extends Activity {
 
         // Adding child data
         List<Dish> sundayDishes = new ArrayList<Dish>();
-        sundayDishes.add(listOfDays.get(0).getBreakfast());
-        sundayDishes.add(listOfDays.get(0).getLunch());
-        sundayDishes.add(listOfDays.get(0).getDinner());
+        for(int i = 0; i < listOfDays.get(0).getDishList().size(); i++) {
+            sundayDishes.add(listOfDays.get(0).getDishList().get(i));
+        }
 
         List<Dish> mondayDishes = new ArrayList<Dish>();
-        mondayDishes.add(listOfDays.get(1).getBreakfast());
-        mondayDishes.add(listOfDays.get(1).getLunch());
-        mondayDishes.add(listOfDays.get(1).getDinner());
+        for(int i = 0; i < listOfDays.get(1).getDishList().size(); i++) {
+
+
+            mondayDishes.add(listOfDays.get(1).getDishList().get(i));
+        }
 
         List<Dish> tuesdayDishes = new ArrayList<Dish>();
-        tuesdayDishes.add(listOfDays.get(2).getBreakfast());
-        tuesdayDishes.add(listOfDays.get(2).getLunch());
-        tuesdayDishes.add(listOfDays.get(2).getDinner());
+        for(int i = 0; i < listOfDays.get(2).getDishList().size(); i++) {
+            tuesdayDishes.add(listOfDays.get(2).getDishList().get(i));
+        }
 
         List<Dish> wednesdayDishes = new ArrayList<Dish>();
-        wednesdayDishes.add(listOfDays.get(3).getBreakfast());
-        wednesdayDishes.add(listOfDays.get(3).getLunch());
-        wednesdayDishes.add(listOfDays.get(3).getDinner());
+        for(int i = 0; i < listOfDays.get(3).getDishList().size(); i++) {
+            wednesdayDishes.add(listOfDays.get(3).getDishList().get(i));
+        }
 
         List<Dish> thursdayDishes = new ArrayList<Dish>();
-        thursdayDishes.add(listOfDays.get(4).getBreakfast());
-        thursdayDishes.add(listOfDays.get(4).getLunch());
-        thursdayDishes.add(listOfDays.get(4).getDinner());
+        for(int i = 0; i < listOfDays.get(4).getDishList().size(); i++) {
+            thursdayDishes.add(listOfDays.get(4).getDishList().get(i));
+        }
 
         List<Dish> fridayDishes = new ArrayList<Dish>();
-        fridayDishes.add(listOfDays.get(5).getBreakfast());
-        fridayDishes.add(listOfDays.get(5).getLunch());
-        fridayDishes.add(listOfDays.get(5).getDinner());
+        for(int i = 0; i < listOfDays.get(5).getDishList().size(); i++) {
+            fridayDishes.add(listOfDays.get(5).getDishList().get(i));
+        }
 
         List<Dish> saturdayDishes = new ArrayList<Dish>();
-        saturdayDishes.add(listOfDays.get(6).getBreakfast());
-        saturdayDishes.add(listOfDays.get(6).getLunch());
-        saturdayDishes.add(listOfDays.get(6).getDinner());
+        for(int i = 0; i < listOfDays.get(6).getDishList().size(); i++) {
+            saturdayDishes.add(listOfDays.get(6).getDishList().get(i));
+        }
 
 
 
         listDataChild.put(listDataHeader.get(0), sundayDishes); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), tuesdayDishes); // Header, Child data
-        listDataChild.put(listDataHeader.get(2), wednesdayDishes); // Header, Child data
+        listDataChild.put(listDataHeader.get(1), mondayDishes); // Header, Child data
+        listDataChild.put(listDataHeader.get(2), tuesdayDishes); // Header, Child data
         listDataChild.put(listDataHeader.get(3), wednesdayDishes); // Header, Child data
         listDataChild.put(listDataHeader.get(4), thursdayDishes); // Header, Child data
         listDataChild.put(listDataHeader.get(5), fridayDishes); // Header, Child data

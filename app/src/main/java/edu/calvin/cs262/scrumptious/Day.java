@@ -13,9 +13,9 @@ import java.util.List;
 public class Day {
 
     // Data
-    private Dish breakfast = null;
-    private Dish lunch = null;
-    private Dish dinner = null;
+//    private Dish breakfast = null;
+//    private Dish lunch = null;
+//    private Dish dinner = null;
     private List<Dish> dishes = new ArrayList<Dish>();  //To be used later, until it's made we have a function to return dishes as a list
     Date date; //should be made private after functions are added for getting full dates, and what day of the week it is
 
@@ -31,11 +31,11 @@ public class Day {
 
     // Getters and Setters
     public List<Dish> getDishList() {
-        List<Dish> dishList = new ArrayList<Dish>();
-        dishList.add(breakfast);
-        dishList.add(lunch);
-        dishList.add(dinner);
-        return dishList;
+//        List<Dish> dishList = new ArrayList<Dish>();
+//        dishList.add(breakfast);
+//        dishList.add(lunch);
+//        dishList.add(dinner);
+        return dishes;
     }
 
     public void addDish(Dish dish) {
@@ -48,27 +48,27 @@ public class Day {
         }
     }
 
-    public Dish getBreakfast() {
-        return breakfast;
-    }
-
-    public void setBreakfast(Dish breakfast) {
-        this.breakfast = breakfast;
-    }
-
-    public Dish getLunch() {
-        return lunch;
-    }
-
-    public void setLunch(Dish lunch) {
-        this.lunch = lunch;
-    }
-
-    public Dish getDinner() {
-        return dinner;
-    }
-
-    public void setDinner(Dish dinner) {
-        this.dinner = dinner;
-    }
+//    public Dish getBreakfast() {
+//        return breakfast;
+//    }
+//
+//    public void setBreakfast(Dish breakfast) {
+//        this.breakfast = breakfast;
+//    }
+//
+//    public Dish getLunch() {
+//        return lunch;
+//    }
+//
+//    public void setLunch(Dish lunch) {
+//        this.lunch = lunch;
+//    }
+//
+//    public Dish getDinner() {
+//        return dinner;
+//    }
+//
+//    public void setDinner(Dish dinner) {
+//        this.dinner = dinner;
+//    }
 }

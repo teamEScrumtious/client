@@ -14,18 +14,21 @@ import java.util.Date;
 public class Dish {
 
     // Data
-    Recipe recipe = null;
-    int servings;
-    Calendar date = Calendar.getInstance();
+    private Recipe recipe = null;
+    private int id;
+    private int servings;
+    private Calendar date = Calendar.getInstance();
 
     // Constructor
-    public Dish(Recipe newRecipe, int newServings, String date ) {
-        recipe = newRecipe;
-        servings = newServings;
+    public Dish(Recipe newRecipe, int newID, int newServings, String newDate ) {
+        this.recipe = newRecipe;
+        this.id = newID;
+        this.servings = newServings;
         try{
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
-            Date parsedDate = dateFormat.parse(date);
+            Date parsedDate = dateFormat.parse(newDate);
             Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
+            this.date.setTimeInMillis(timestamp.getTime());
         }catch(Exception e){
             Log.d(Scrumptious.class.getSimpleName(), e.toString());
         }
@@ -40,11 +43,27 @@ public class Dish {
         this.recipe = recipe;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getServings() {
         return servings;
     }
 
     public void setServings(int servings) {
         this.servings = servings;
+    }
+
+    public Calendar getDate() {
+        return date;
+    }
+
+    public void setDate(Calendar date) {
+        this.date = date;
     }
 }
