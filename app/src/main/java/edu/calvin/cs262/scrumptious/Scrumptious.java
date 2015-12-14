@@ -6,16 +6,6 @@ import android.util.Log;
 
 import net.danlew.android.joda.JodaTimeAndroid;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.protocol.BasicHttpContext;
-import org.apache.http.protocol.HttpContext;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -40,7 +30,7 @@ public class Scrumptious extends Application implements AsyncResponse<String> {
 
     // This will receive result fired from async class of onPostExecute(result) method.
     // This executes after the main thread.
-    public void processFinish(String output){
+    public void processFinish(String output) {
 
         webResults = output;
         Log.d(Scrumptious.class.getSimpleName(), "webResults: " + webResults);
@@ -103,6 +93,7 @@ public class Scrumptious extends Application implements AsyncResponse<String> {
                         recipeBookmarked = Boolean.valueOf(splitWebResults[i]);
                         dishRecipeRead = true;
                     }
+                // Read in a new ingredient
                 } else {
                     if (ingredientID == -1) {
                         ingredientID = Integer.valueOf(splitWebResults[i]);
@@ -117,6 +108,7 @@ public class Scrumptious extends Application implements AsyncResponse<String> {
                     } else if (recipeIngredientQuantity == -1) {
                         recipeIngredientQuantity = Integer.valueOf(splitWebResults[i]);
 
+                        // Add the new ingredient
                         arrayOfIngredientQuantities.add(new IngredientQuantity(new Ingredient(ingredientName, ingredientID, ingredientType), recipeIngredientID, recipeIngredientUnit, recipeIngredientQuantity));
 
                         // Reset the recipe variables
@@ -149,14 +141,16 @@ public class Scrumptious extends Application implements AsyncResponse<String> {
                     }
                 }
 
-                String[] numberSplitWebResults = null;
+                // This stuff is unneccessary for now, possibly ever
 
-                Log.d(Scrumptious.class.getSimpleName(), "splitWebResults: " + splitWebResults[i]);
-
-                // Get only the number of the recipe (it should be at an index of 0
-                // Note: Testing for numbers with more than 1 digits have not happened yet
-                numberSplitWebResults = splitWebResults[i].split("\\D");
-                //Log.d(Scrumptious.class.getSimpleName(), "numberSplitWebResults: " + numberSplitWebResults[0]);
+//                String[] numberSplitWebResults = null;
+//
+//                Log.d(Scrumptious.class.getSimpleName(), "splitWebResults: " + splitWebResults[i]);
+//
+//                // Get only the number of the recipe (it should be at an index of 0
+//                // Note: Testing for numbers with more than 1 digits have not happened yet
+//                numberSplitWebResults = splitWebResults[i].split("\\D");
+//                //Log.d(Scrumptious.class.getSimpleName(), "numberSplitWebResults: " + numberSplitWebResults[0]);
             }
         }
 
@@ -170,7 +164,7 @@ public class Scrumptious extends Application implements AsyncResponse<String> {
         //JodaTimeAndroid.init(this);
 
         // Set up the thread that retreives data from the server
-        MyAsyncTask asyncTask =new MyAsyncTask(SERVER_URI + DATA_URI);
+        MyAsyncTask asyncTask = new MyAsyncTask(SERVER_URI + DATA_URI);
 
         asyncTask.delegate = this;
 
@@ -187,74 +181,74 @@ public class Scrumptious extends Application implements AsyncResponse<String> {
     }
 
     // Uses http://stackoverflow.com/questions/12575068/how-to-get-the-result-of-onpostexecute-to-main-activity-because-asynctask-is-a
-    private class MyAsyncTask extends AsyncTask<Void, Void, String> {
-
-        public AsyncResponse delegate=null;
-        private String URI = "";
-
-        public MyAsyncTask(String newURI) {
-            URI = newURI;
-        }
-
-        /**
-         * This method extracts text from the HTTP response entity.
-         *
-         * @param entity
-         * @return
-         * @throws IllegalStateException
-         * @throws IOException
-         */
-        protected String getASCIIContentFromEntity(HttpEntity entity) throws IllegalStateException, IOException {
-            InputStream in = entity.getContent();
-            StringBuffer out = new StringBuffer();
-            int n = 1;
-            while (n > 0) {
-                byte[] b = new byte[4096];
-                n = in.read(b);
-                if (n > 0) out.append(new String(b, 0, n));
-            }
-            return out.toString();
-        }
-
-        /**
-         * This method issues the HTTP GET request.
-         *
-         * @param params
-         * @return
-         */
-        @Override
-        protected String doInBackground(Void... params) {
-            HttpClient httpClient = new DefaultHttpClient();
-            HttpContext localContext = new BasicHttpContext();
-            HttpGet httpGet = new HttpGet(URI);
-            String text = null;
-            try {
-                HttpResponse response = httpClient.execute(httpGet, localContext);
-                HttpEntity entity = response.getEntity();
-                text = getASCIIContentFromEntity(entity);
-                Log.d(Scrumptious.class.getSimpleName(), "Received data from server at address " + URI);
-                Log.d(Scrumptious.class.getSimpleName(), "Data received is:\n" + text);
-            } catch (Exception e) {
-                Log.d(Scrumptious.class.getSimpleName(), "Failed to retrieve data from the server.");
-                return e.getLocalizedMessage();
-            }
-            return text;
-        }
-
-        /**
-         * The method takes the results of the request, when they arrive, and updates the interface.
-         *
-         * @param results
-         */
-        @Override
-        protected void onPostExecute(String results) {
-            super.onPostExecute(results);
-            if (results != null) {
-                delegate.processFinish(results);
-            } else {
-                delegate.processFinish("Nothing found.");
-            }
-        }
-
-    }
+//    private class MyAsyncTask extends AsyncTask<Void, Void, String> {
+//
+//        public AsyncResponse delegate=null;
+//        private String URI = "";
+//
+//        public MyAsyncTask(String newURI) {
+//            URI = newURI;
+//        }
+//
+//        /**
+//         * This method extracts text from the HTTP response entity.
+//         *
+//         * @param entity
+//         * @return
+//         * @throws IllegalStateException
+//         * @throws IOException
+//         */
+//        protected String getASCIIContentFromEntity(HttpEntity entity) throws IllegalStateException, IOException {
+//            InputStream in = entity.getContent();
+//            StringBuffer out = new StringBuffer();
+//            int n = 1;
+//            while (n > 0) {
+//                byte[] b = new byte[4096];
+//                n = in.read(b);
+//                if (n > 0) out.append(new String(b, 0, n));
+//            }
+//            return out.toString();
+//        }
+//
+//        /**
+//         * This method issues the HTTP GET request.
+//         *
+//         * @param params
+//         * @return
+//         */
+//        @Override
+//        protected String doInBackground(Void... params) {
+//            HttpClient httpClient = new DefaultHttpClient();
+//            HttpContext localContext = new BasicHttpContext();
+//            HttpGet httpGet = new HttpGet(URI);
+//            String text = null;
+//            try {
+//                HttpResponse response = httpClient.execute(httpGet, localContext);
+//                HttpEntity entity = response.getEntity();
+//                text = getASCIIContentFromEntity(entity);
+//                Log.d(Scrumptious.class.getSimpleName(), "Received data from server at address " + URI);
+//                Log.d(Scrumptious.class.getSimpleName(), "Data received is:\n" + text);
+//            } catch (Exception e) {
+//                Log.d(Scrumptious.class.getSimpleName(), "Failed to retrieve data from the server.");
+//                return e.getLocalizedMessage();
+//            }
+//            return text;
+//        }
+//
+//        /**
+//         * The method takes the results of the request, when they arrive, and updates the interface.
+//         *
+//         * @param results
+//         */
+//        @Override
+//        protected void onPostExecute(String results) {
+//            super.onPostExecute(results);
+//            if (results != null) {
+//                delegate.processFinish(results);
+//            } else {
+//                delegate.processFinish("Nothing found.");
+//            }
+//        }
+//
+//    }
 }
