@@ -9,21 +9,13 @@
 package edu.calvin.cs262.scrumptious;
 
 import android.app.Activity;
-import android.app.Application;
-import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -36,7 +28,7 @@ public class RecipeBookListAlphabetical extends Activity {
 
         // Access global arrays
         ArrayList<Recipe> arrayOfRecipes = (((Scrumptious)getApplicationContext()).arrayOfRecipes);
-        ArrayList<Ingredient> arrayOfIngredients = (((Scrumptious)getApplicationContext()).arrayofIngredients);
+        ArrayList<Ingredient> arrayOfIngredients = (((Scrumptious)getApplicationContext()).arrayOfIngredients);
 
 
 
