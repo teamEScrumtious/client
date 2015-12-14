@@ -6,6 +6,7 @@
 
 package edu.calvin.cs262.scrumptious;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.View;
@@ -29,6 +30,9 @@ public class ShoppingListMenu extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_list_menu);
         //getActionBar().setDisplayHomeAsUpEnabled(true);
+        // Change the title
+        ActionBar ab = getActionBar();
+        ab.setTitle("                                           ");
         // get the listview
         expListView = (ExpandableListView) findViewById(R.id.expandableListView);
 

@@ -30,7 +30,7 @@ public class MainMenu extends Activity {
 
         // Change the title
         ActionBar ab = getActionBar();
-        ab.setTitle("");
+        ab.setTitle("                                           ");
     }
 
 

@@ -8,6 +8,7 @@
  */
 package edu.calvin.cs262.scrumptious;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +26,10 @@ public class RecipeBookListAlphabetical extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_book_list_alphabetical);
+
+        // Change the title
+        ActionBar ab = getActionBar();
+        ab.setTitle("                                           ");
 
         // Access global arrays
         ArrayList<Recipe> arrayOfRecipes = (((Scrumptious)getApplicationContext()).arrayOfRecipes);

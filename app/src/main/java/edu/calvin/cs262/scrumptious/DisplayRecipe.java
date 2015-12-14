@@ -1,5 +1,6 @@
 package edu.calvin.cs262.scrumptious;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +18,9 @@ public class DisplayRecipe extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display_recipe);
-
+        // Change the title
+        ActionBar ab = getActionBar();
+        ab.setTitle("                                           ");
         // Get the intent and get the recipe data from the intent's extras
         Intent intent = getIntent();
         String recipeName = intent.getStringExtra("recipeName");
