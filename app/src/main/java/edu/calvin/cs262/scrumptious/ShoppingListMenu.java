@@ -1,6 +1,6 @@
 /**
  * ShoppingListMenu.java
- *
+ * <p/>
  * Displays shopping list, populated by recipies, via check boxes.
  */
 
@@ -103,7 +103,7 @@ public class ShoppingListMenu extends Activity {
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<IngredientQuantity>>();
-        WeekPlan weekPlan = (((Scrumptious)getApplicationContext()).weekPlan);
+        WeekPlan weekPlan = (((Scrumptious) getApplicationContext()).weekPlan);
 
         // Data to be used for looping
         List<Day> dayList = weekPlan.getDayList();
@@ -111,41 +111,31 @@ public class ShoppingListMenu extends Activity {
         List<IngredientQuantity> ingredientList;
 
         // Loop through every day and find every ingredient, and if it has a new type then add it to the header list
-        for(int i = 0; i < dayList.size(); i++) {
+        for (int i = 0; i < dayList.size(); i++) {
             dishList = dayList.get(i).getDishList();
             // Looping through dishes in the current day
-            for(int j = 0; j < dishList.size(); j++) {
+            for (int j = 0; j < dishList.size(); j++) {
                 ingredientList = dishList.get(j).getRecipe().getIngredients();
                 // Looping through ingredients in the current dish
-                for(int k = 0; k < ingredientList.size(); k++) {
-
+                for (int k = 0; k < ingredientList.size(); k++) {
                     //if the ingredient type matches any current categories ("listDataHeader" or alternatively "listDataChild.containsKey")
-                    if (listDataChild.containsKey(ingredientList.get(k).getIngredient().getType())){
-
-                        // Variables for determining if ingredient with same name has been added yet
-                        List<IngredientQuantity> typeIngredientList = listDataChild.get(ingredientList.get(k).getIngredient().getType());
-                        boolean ingredientExists = false;
-                        double ingredientQuantityTempA = 0.0;
-                        double ingredientQuantityTempB = 0.0;
-
-
-                        // Loop through copy of the ingredientList corresponding to a type in listDataChild to see if it contains an ingredient with the same name
-                        //if this method just used listDatachild, then I would know which child we are looking at. Then I would know which child to add to.
-                        for( int n = 0; n < typeIngredientList.size(); n++){
-                            if(typeIngredientList.get(n).getIngredient().getName().equals(ingredientList.get(k).getIngredient().getName())) {
-                                ingredientExists = true;
-                                ingredientQuantityTempA = ingredientList.get(k).getQuantity();
-                                ingredientQuantityTempB = listDataChild.get(ingredientList.get(k).getIngredient().getType()).get(n).getQuantity();
+                    if (listDataChild.containsKey(ingredientList.get(k).getIngredient().getType())) {
+                        /** create temp list copy of listDataChild's appropriate list, which is the value to the key found above **/
+                        List<IngredientQuantity> tempChildList = listDataChild.get((ingredientList.get(k).getIngredient().getType()));
+                        boolean searchSucceeded = false;
+                        /** Search through temp list for matching name **/
+                        for (int h = 0; h < tempChildList.size(); h++) {
+                            if (tempChildList.get(h).getIngredient().getName().equals(ingredientList.get(k).getIngredient().getName())) {
+                                /** name matched, now combine ingredient quantities **/
+                                tempChildList.get(h).setQuantity(tempChildList.get(h).getQuantity() + ingredientList.get(k).getQuantity());
+                                listDataChild.remove(ingredientList.get(k).getIngredient().getType());
+                                listDataChild.put(ingredientList.get(k).getIngredient().getType(), tempChildList);
+                                searchSucceeded = true;
                                 break;
                             }
                         }
-
-                        //and if that category contains any ingredients with the same name
-                        if (ingredientExists) {
-                            //combine the ingredients
-                            listDataChild.get(ingredientList.get(k).getIngredient().getType()).get(k).setQuantity(ingredientQuantityTempA + ingredientQuantityTempB);
-
-                        } else{
+                        /** if the search didn't find a matching name, searchSucceeded will still be false **/
+                        if (!searchSucceeded) {
                             //The category existed but there were no matching ingredients by that name, so make a new one.
                             listDataChild.get(ingredientList.get(k).getIngredient().getType()).add(ingredientList.get(k));
                         }
