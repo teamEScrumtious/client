@@ -190,8 +190,6 @@ public class WeeklyPlanMenu extends Activity {
             saturdayDishes.add(listOfDays.get(6).getDishList().get(i));
         }
 
-
-
         listDataChild.put(listDataHeader.get(0), sundayDishes); // Header, Child data
         listDataChild.put(listDataHeader.get(1), mondayDishes); // Header, Child data
         listDataChild.put(listDataHeader.get(2), tuesdayDishes); // Header, Child data

@@ -2,6 +2,10 @@ package edu.calvin.cs262.scrumptious;
 
 import android.util.Log;
 
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -17,7 +21,8 @@ public class Dish {
     private Recipe recipe = null;
     private int id;
     private int servings;
-    private Calendar date = Calendar.getInstance();
+    //private Calendar date = Calendar.getInstance();
+    private DateTime date;
 
     // Constructor
     public Dish(Recipe newRecipe, int newID, int newServings, String newDate ) {
@@ -25,10 +30,11 @@ public class Dish {
         this.id = newID;
         this.servings = newServings;
         try{
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
-            Date parsedDate = dateFormat.parse(newDate);
-            Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
-            this.date.setTimeInMillis(timestamp.getTime());
+            DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.SSS");
+            date = formatter.parseDateTime(newDate);
+            //Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
+            //this.date = new DateTime(parsedDate.getYear(), parsedDate.getMonth(), parsedDate.getDay(), parsedDate.getHours(), parsedDate.getMinutes());
+            //this.date.setTimeInMillis(timestamp.getTime());
         }catch(Exception e){
             Log.d(Scrumptious.class.getSimpleName(), e.toString());
         }
@@ -59,11 +65,11 @@ public class Dish {
         this.servings = servings;
     }
 
-    public Calendar getDate() {
+    public DateTime getDate() {
         return date;
     }
 
-    public void setDate(Calendar date) {
+    public void setDate(DateTime date) {
         this.date = date;
     }
 }
