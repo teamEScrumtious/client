@@ -36,7 +36,7 @@ public class RecipeBookListAlphabetical extends Activity implements AsyncRespons
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_book_list_alphabetical);
-        
+
         // Start the async thread to connect to the server and get the recipes
         MyAsyncTask asyncTask = new MyAsyncTask(SERVER_URI + DATA_URI);
 
