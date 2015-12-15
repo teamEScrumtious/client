@@ -14,5 +14,9 @@
     <string name="title_activity_recipe_book_list_alphabetical">RecipeBookListAlphabetical</string>
     <string name="title_activity_weekly_plan_menu">WeeklyPlanMenu</string>
     <string name="title_activity_shopping_list_menu">ShoppingListMenu</string>
+    <string name="help">1. Click on the cutting board icon in the upper left corner of every page to navigate back to the home page. \n2. Press the middle button (it says “Week Plan”). \n3. Press on an upcoming date (e.g. “Saturday, December 12”) to view the dishes for that day. Dishes will be in chronological order</string>
+    <string name="help2">1. Click on the cutting board icon in the upper left corner of every page to navigate back to the home page. \n2. Press the bottom button (it says “Shopping List”).\n3. Press on an ingredient type (“Produce”, “Meat”, etc.) to view the ingredients of that type.</string>
+    <string name="help3">1. Click on the cutting board icon in the upper left corner of every page to navigate back to the home page. \n2. Press the top button (it says "Recipe Book"). \n3. Select the way in which you wish to view the recipes ("Alphabetical", "Bookmarked", or "Recent").</string>
+    <string name="help4">1. Click on the cutting board icon in the upper left corner of every page to navigate back to the home page. \n2. Press the top button (it says "Recipe Book"). \n3. Select the way in which you wish to view the recipes ("Alphabetical", "Bookmarked", or "Recent"). \n4. Scroll through the recipes until you find one you would like to make \n5. Press "Add to Meal Plan". \n6. Fill out the form, selecting the day of the week, the time, and the number of people you want to serve. \n7. Press "Add to Meal Plan!"</string>
 
 </resources>
