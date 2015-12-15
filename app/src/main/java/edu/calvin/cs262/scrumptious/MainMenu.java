@@ -46,7 +46,8 @@ public class MainMenu extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle presses on the action bar items
-        switch (item.getItemId()) {
+        int id = item.getItemId();
+        switch (id) {
           //  case R.id.action_search:
           //      openSearch();               //commented out, Prof wanted us to cut out lab stuff
           //      return true;                  //also commented out openSearch()
