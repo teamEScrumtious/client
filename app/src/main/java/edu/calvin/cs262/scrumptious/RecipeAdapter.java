@@ -33,11 +33,9 @@ public class RecipeAdapter extends ArrayAdapter<Recipe> {
 
         // Lookup view for data population
         TextView tvRecipeName = (TextView) convertView.findViewById(R.id.tvRecipeName);
-        TextView tvRecipeServings = (TextView) convertView.findViewById(R.id.tvRecipeServings);
 
         // Populate the data into the template view using the data object
         tvRecipeName.setText(recipe.getName());
-        tvRecipeServings.setText(String.valueOf("Servings: " + recipe.getServings()));
 
         // Return the completed view to render on screen
         return convertView;

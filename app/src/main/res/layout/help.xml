@@ -7,109 +7,121 @@
     android:weightSum="1"
     android:id="@+id/help"
     tools:context=".Help">
+    <ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Help me! I&apos;m confused!"
-        android:id="@+id/textView4"
-        android:layout_gravity="center_horizontal"
-        android:textSize="28dp"
-        android:padding="15dp"
-        android:textColor="#0E400E"
-        android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="To view the dishes for the next week:"
-        android:id="@+id/textView9"
-        android:textSize="20dp"
-        android:textColor="#010101"
-        android:padding="5dp"
-        android:layout_gravity="center_horizontal"
-        android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Help me! I&apos;m confused!"
+                android:id="@+id/textView4"
+                android:layout_gravity="center_horizontal"
+                android:textSize="28dp"
+                android:padding="15dp"
+                android:textColor="#0E400E"
+                android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/help"
-        android:id="@+id/textView10"
-        android:textColor="#000100"
-        android:layout_margin="10dp"
-        android:textSize="20dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="To view the dishes for the next week:"
+                android:id="@+id/textView9"
+                android:textSize="20dp"
+                android:textColor="#010101"
+                android:padding="5dp"
+                android:layout_gravity="center_horizontal"
+                android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="To view the ingredients \nfor the next week&apos;s meals:"
-        android:id="@+id/textView11"
-        android:textSize="20dp"
-        android:textColor="#010101"
-        android:padding="5dp"
-        android:layout_gravity="center_horizontal"
-        android:textStyle="bold"
-        android:gravity="center_horizontal" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/help"
+                android:id="@+id/textView10"
+                android:textColor="#000100"
+                android:layout_margin="10dp"
+                android:textSize="20dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/help2"
-        android:id="@+id/textView12"
-        android:textColor="#000100"
-        android:layout_margin="10dp"
-        android:textSize="20dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="To view the ingredients \nfor the next week&apos;s meals:"
+                android:id="@+id/textView11"
+                android:textSize="20dp"
+                android:textColor="#010101"
+                android:padding="5dp"
+                android:layout_gravity="center_horizontal"
+                android:textStyle="bold"
+                android:gravity="center_horizontal" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="To find a recipe:"
-        android:id="@+id/textView13"
-        android:textSize="20dp"
-        android:textColor="#010101"
-        android:padding="5dp"
-        android:layout_gravity="center_horizontal"
-        android:textStyle="bold"
-        android:gravity="center_horizontal" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/help2"
+                android:id="@+id/textView12"
+                android:textColor="#000100"
+                android:layout_margin="10dp"
+                android:textSize="20dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/help3"
-        android:id="@+id/textView14"
-        android:textColor="#000100"
-        android:layout_margin="10dp"
-        android:textSize="20dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="To find a recipe:"
+                android:id="@+id/textView13"
+                android:textSize="20dp"
+                android:textColor="#010101"
+                android:padding="5dp"
+                android:layout_gravity="center_horizontal"
+                android:textStyle="bold"
+                android:gravity="center_horizontal" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="To add a recipe to the meal plan for the next week:"
-        android:id="@+id/textView15"
-        android:textSize="20dp"
-        android:textColor="#010101"
-        android:padding="5dp"
-        android:layout_gravity="center_horizontal"
-        android:textStyle="bold"
-        android:gravity="center_horizontal" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/help3"
+                android:id="@+id/textView14"
+                android:textColor="#000100"
+                android:layout_margin="10dp"
+                android:textSize="20dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/help4"
-        android:id="@+id/textView16"
-        android:textColor="#000100"
-        android:layout_margin="10dp"
-        android:textSize="20dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="To add a recipe to the meal plan for the next week:"
+                android:id="@+id/textView15"
+                android:textSize="20dp"
+                android:textColor="#010101"
+                android:padding="5dp"
+                android:layout_gravity="center_horizontal"
+                android:textStyle="bold"
+                android:gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/help4"
+                android:id="@+id/textView16"
+                android:textColor="#000100"
+                android:layout_margin="10dp"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
 </LinearLayout>
