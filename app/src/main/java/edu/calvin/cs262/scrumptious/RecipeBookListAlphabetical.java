@@ -8,6 +8,7 @@
  */
 package edu.calvin.cs262.scrumptious;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,9 +36,13 @@ public class RecipeBookListAlphabetical extends Activity implements AsyncRespons
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_book_list_alphabetical);
-
+        
         // Start the async thread to connect to the server and get the recipes
         MyAsyncTask asyncTask = new MyAsyncTask(SERVER_URI + DATA_URI);
+
+        // Change the title
+        ActionBar ab = getActionBar();
+        ab.setTitle("                                           ");
 
         asyncTask.delegate = this;
 
