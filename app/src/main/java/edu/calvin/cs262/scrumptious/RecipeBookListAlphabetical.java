@@ -27,8 +27,9 @@ public class RecipeBookListAlphabetical extends Activity implements AsyncRespons
 
     // Set up variables for accessing RESTful web service
     private static String SERVER_URI = "http://10.0.2.2:9998/scrumptious/";
-    private static String DATA_URI = "recipes/";
+    private static String DATA_URI = "recipes/alpha";
     private String webResults = "";
+    private String[] splitWebResults = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +41,8 @@ public class RecipeBookListAlphabetical extends Activity implements AsyncRespons
 
         asyncTask.delegate = this;
 
-        // Execute asyncTask and wait for it to return
-        try {
-            asyncTask.execute().get(); // Changes this to no timer?
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
+        // Execute asyncTask
+        asyncTask.execute();
     }
 
     @Override
@@ -81,7 +76,7 @@ public class RecipeBookListAlphabetical extends Activity implements AsyncRespons
         Log.d(Scrumptious.class.getSimpleName(), "webResults: " + webResults);
 
         // Split the server data's individual lines into separate strings
-        String[] splitWebResults = null;
+        //String[] splitWebResults = null;
         splitWebResults = webResults.split("\n");
 
 
@@ -104,10 +99,10 @@ public class RecipeBookListAlphabetical extends Activity implements AsyncRespons
                 Intent intent = new Intent(RecipeBookListAlphabetical.this, DisplayRecipe.class);
 
                 // Gets needed info from recipe and puts it in the intent
-                Recipe recipe = (Recipe) adapter.getItemAtPosition(position);
-                intent.putExtra("recipeName", recipe.getName());
-                intent.putExtra("recipeInstructions", recipe.getInstructions());
-                intent.putExtra("recipeServings", recipe.getServings());
+                //Recipe recipe = (Recipe) adapter.getItemAtPosition(position);
+                intent.putExtra("recipeName", splitWebResults[position*4+1]); //recipe.getName());
+                //intent.putExtra("recipeInstructions", //recipe.getInstructions());
+                intent.putExtra("recipeServings", Integer.valueOf(splitWebResults[position * 4 + 3])); //recipe.getServings());
 
                 // Starts the intent
                 startActivity(intent);

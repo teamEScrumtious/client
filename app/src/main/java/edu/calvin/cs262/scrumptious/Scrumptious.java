@@ -169,15 +169,7 @@ public class Scrumptious extends Application implements AsyncResponse<String> {
         asyncTask.delegate = this;
 
         // Execute asyncTask and wait for it to return
-        try {
-            asyncTask.execute().get(5000, TimeUnit.MILLISECONDS); // Changes this to no timer?
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        }
+        asyncTask.execute();
     }
 
     // Uses http://stackoverflow.com/questions/12575068/how-to-get-the-result-of-onpostexecute-to-main-activity-because-asynctask-is-a
