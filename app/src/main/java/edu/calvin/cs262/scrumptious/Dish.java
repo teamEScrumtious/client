@@ -40,7 +40,7 @@ public class Dish {
         }
     }
 
-    // Getter and Setters
+    // Getters and Setters
     public Recipe getRecipe() {
         return recipe;
     }

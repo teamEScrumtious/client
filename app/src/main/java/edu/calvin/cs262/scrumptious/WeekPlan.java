@@ -14,10 +14,12 @@ import java.util.List;
 public class WeekPlan {
     // Data
     private ArrayList<Day> dayList = new ArrayList<Day>();
+    private ArrayList<Dish> dishes;
 
     // Constructor
-    public WeekPlan(ArrayList<Dish> dishes) {
+    public WeekPlan(ArrayList<Dish> newDishes) {
         DateTime localDate = new DateTime();
+        dishes = newDishes;
 
         // Add new Day objects for the next seven days to the object
         for(int i = 0; i < 7; i++) {
