@@ -1,13 +1,14 @@
 /**
  * RecipeBookListAlphabetical.java
  *
- * Choose how to view recipies
+ * Choose how to view recipes
  * -alphabetically - RecipeBookListAlphabetical.java
  *
  * [UNDER CONSTRUCTION]
  */
 package edu.calvin.cs262.scrumptious;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +22,10 @@ public class RecipeBookMenu extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_book_menu);
+
+        // Change the title
+        ActionBar ab = getActionBar();
+        ab.setTitle("                                           ");
     }
 
 //    @Override
@@ -46,8 +51,20 @@ public class RecipeBookMenu extends Activity {
 //    }
 
 //go to Recipe Book List Alphabetical menu, where recipes are listed alphabetically...
-    public void startRecipeBookMenu(View view){
+    public void startRecipeBookAlphabetical(View view){
         Intent intent = new Intent(RecipeBookMenu.this, RecipeBookListAlphabetical.class);
         startActivity(intent);
+    }
+
+    //go to Recipe Book List Alphabetical menu, where recipes are listed alphabetically...
+    public void startRecipeBookBookmarked(View view){
+//        Intent intent = new Intent(RecipeBookMenu.this, RecipeBookListBookmarked.class);
+//        startActivity(intent);
+    }
+
+    //go to Recipe Book List Alphabetical menu, where recipes are listed alphabetically...
+    public void startRecipeBookRecent(View view){
+//        Intent intent = new Intent(RecipeBookMenu.this, RecipeBookListRecent.class);
+//        startActivity(intent);
     }
 }

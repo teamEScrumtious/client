@@ -1,13 +1,15 @@
 /**
  * ShoppingListMenu.java
- *
+ * <p/>
  * Displays shopping list, populated by recipies, via check boxes.
  */
 
 package edu.calvin.cs262.scrumptious;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
@@ -29,6 +31,9 @@ public class ShoppingListMenu extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_list_menu);
         //getActionBar().setDisplayHomeAsUpEnabled(true);
+        // Change the title
+        ActionBar ab = getActionBar();
+        ab.setTitle("                                           ");
         // get the listview
         expListView = (ExpandableListView) findViewById(R.id.expandableListView);
 
@@ -103,31 +108,53 @@ public class ShoppingListMenu extends Activity {
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<IngredientQuantity>>();
-        WeekPlan weekPlan = (((Scrumptious)getApplicationContext()).weekPlan);
+        WeekPlan weekPlan = (((Scrumptious) getApplicationContext()).weekPlan);
 
         // Data to be used for looping
-        List<String> listOfTypes = new ArrayList<String>();
-        List<Day> dayList = weekPlan.getDayList();
-        List<Dish> dishList = null;
-        List<IngredientQuantity> ingredientList = null;
+        List<Day> dayList = new ArrayList<Day>(weekPlan.getDayList());
+        List<Dish> dishList;
+        List<IngredientQuantity> ingredientList;
+        IngredientQuantity ingredientToAdd;
 
         // Loop through every day and find every ingredient, and if it has a new type then add it to the header list
-        for(int i = 0; i < dayList.size(); i++) {
-            dishList = dayList.get(i).getDishList();
+        for (int i = 0; i < dayList.size(); i++) {
+            dishList = new ArrayList<Dish>(dayList.get(i).getDishList());
             // Looping through dishes in the current day
-            for(int j = 0; j < dishList.size(); j++) {
-                ingredientList = dishList.get(j).getRecipe().getIngredients();
+            for (int j = 0; j < dishList.size(); j++) {
+                ingredientList = new ArrayList<IngredientQuantity>(dishList.get(j).getRecipe().getIngredients());
                 // Looping through ingredients in the current dish
-                for(int k = 0; k < ingredientList.size(); k++) {
-                    // If the type of the ingredient isn't in the header data list yet, add it in
-                    if (!listDataHeader.contains(ingredientList.get(k).getIngredient().getType())) {
+                for (int k = 0; k < ingredientList.size(); k++) {
+                    //if the ingredient type matches any current categories ("listDataHeader" or alternatively "listDataChild.containsKey")
+                    if (listDataChild.containsKey(ingredientList.get(k).getIngredient().getType())) {
+                        /** create temp list copy of listDataChild's appropriate list, which is the value to the key found above **/
+                        List<IngredientQuantity> tempChildList = new ArrayList<IngredientQuantity>(listDataChild.get((ingredientList.get(k).getIngredient().getType())));
+                        boolean searchSucceeded = false;
+                        /** Search through temp list for matching name **/
+                        for (int h = 0; h < tempChildList.size(); h++) {
+                            if (tempChildList.get(h).getIngredient().getName().equals(ingredientList.get(k).getIngredient().getName())) {
+                                /** name matched, now combine ingredient quantities **/
+                                tempChildList.get(h).setQuantity(tempChildList.get(h).getQuantity() + ingredientList.get(k).getQuantity());
+                                listDataChild.remove(ingredientList.get(k).getIngredient().getType());
+                                listDataChild.put(ingredientList.get(k).getIngredient().getType(), tempChildList);
+                                searchSucceeded = true;
+                                break;
+                            }
+                        }
+                        /** if the search didn't find a matching name, searchSucceeded will still be false **/
+                        if (!searchSucceeded) {
+                            //The category existed but there were no matching ingredients by that name, so make a new one.
+                            ingredientToAdd = ingredientList.get(k);
+                            listDataChild.get(ingredientList.get(k).getIngredient().getType()).add(new IngredientQuantity(ingredientToAdd.getIngredient(), ingredientToAdd.getId(), ingredientToAdd.getUnit(), ingredientToAdd.getQuantity()));
+                        }
+                    } else {
+                        //No category matches the current ingredient type, so make a new category and add the ingredient to it.
                         listDataHeader.add(ingredientList.get(k).getIngredient().getType());
                         // Also add in a new arraylist for the child data list to use (corresponds to the list just added for the header data list)
                         listDataChild.put(ingredientList.get(k).getIngredient().getType(), new ArrayList<IngredientQuantity>());
+                        ingredientToAdd = ingredientList.get(k);
+                        listDataChild.get(ingredientList.get(k).getIngredient().getType()).add(new IngredientQuantity(ingredientToAdd.getIngredient(), ingredientToAdd.getId(), ingredientToAdd.getUnit(), ingredientToAdd.getQuantity()));
                     }
-                    // Adds the ingredient to the appropriate list in the child data
-                    // NOTE: We'll have to have an "if contains" statement here, and if it's true, merge the two quantities together
-                    listDataChild.get(ingredientList.get(k).getIngredient().getType()).add(ingredientList.get(k));
+
                 }
             }
         }
