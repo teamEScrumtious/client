@@ -1,9 +1,11 @@
 /**
+ * MainMenu.java
+ *
  * FoodFor Thought Android Application
  * by Team Scrum-tious
  * 8/25/15 - November 2015
  *
- * Main menu acticity for app
+ * Main menu activity for app
  * Links to all features and submenus of the app
  *
  */
@@ -12,10 +14,8 @@ package edu.calvin.cs262.scrumptious;
 
 import android.app.ActionBar;
 import android.app.Activity;
-import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;

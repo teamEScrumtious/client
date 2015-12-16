@@ -1,3 +1,12 @@
+/**
+ * Dish.java
+ *
+ * Created by tjluce on 11/10/15.
+ *
+ * Models a dish (or a meal, to use more common language).  A dish contains a recipe, along with
+ * the database id, the serving size, and the date it will be served on.
+ */
+
 package edu.calvin.cs262.scrumptious;
 
 import android.util.Log;
@@ -6,22 +15,12 @@ import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
-/**
- * Created by tjluce on 11/10/15.
- * Models a dish (or a meal, if you prefer).
- */
 public class Dish {
 
     // Data
     private Recipe recipe = null;
     private int id;
     private int servings;
-    //private Calendar date = Calendar.getInstance();
     private DateTime date;
 
     // Constructor
@@ -32,9 +31,6 @@ public class Dish {
         try{
             DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.SSS");
             date = formatter.parseDateTime(newDate);
-            //Timestamp timestamp = new java.sql.Timestamp(parsedDate.getTime());
-            //this.date = new DateTime(parsedDate.getYear(), parsedDate.getMonth(), parsedDate.getDay(), parsedDate.getHours(), parsedDate.getMinutes());
-            //this.date.setTimeInMillis(timestamp.getTime());
         }catch(Exception e){
             Log.d(Scrumptious.class.getSimpleName(), e.toString());
         }

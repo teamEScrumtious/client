@@ -1,8 +1,10 @@
 /**
- * RecipeBookListAlphabetical.java
+ * RecipeBookListRecent.java
  *
- * Displays all available Recipes in alphabetical order in a list.  Uses RecipeAdapter to adapt
+ * Displays all recent Recipes in alphabetical order in a list.  Uses RecipeAdapter to adapt
  * the Recipe array to a ListView
+ *
+ * DOES NOT CURRENTLY WORK
  *
  * Used tutorial on https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView
  */
@@ -72,9 +74,6 @@ public class RecipeBookListRecent extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-//            case R.id.action_settings:
-//                // User chose the "Settings" item, show the app settings UI...
-//                return true;
 
             case R.id.action_add:
                 // User chose the "Add" action, let them add a new recipe

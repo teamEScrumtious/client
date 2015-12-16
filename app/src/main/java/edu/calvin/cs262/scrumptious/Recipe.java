@@ -1,33 +1,34 @@
-package edu.calvin.cs262.scrumptious;
-
-import java.util.ArrayList;
-
 /**
+ * Recipe.java
+ *
  * Created by tjluce on 11/4/15.
+ *
  * Represents a Recipe object.  Data for the object should be retrieved from the SQL database.
  * Contains a name, a list of ingredients, cooking instructions, serving size, and whether or not
  * it is bookmarked.
  *
  * Based on tutorial at http://www.softwarepassion.com/android-series-custom-listview-items-and-adapters/
  */
+
+package edu.calvin.cs262.scrumptious;
+
+import java.util.ArrayList;
+
 public class Recipe {
 
     // Data
     private String recipeName;
     private int id;
-    //private String recipeType;
     private ArrayList<IngredientQuantity> ingredients;
     private String instructions;
     private boolean bookmarked;
     private int servings;
-    //private ArrayList<String> notes = new ArrayList<String>();
     private String note;
 
     // Constructor
     public Recipe(String newRecipeName, int newID, String newInstructions, ArrayList<IngredientQuantity> newIngredients, boolean newBookmarked, int newServings, String newNote) {
         this.recipeName = newRecipeName;
         this.id = newID;
-        //this.recipeType = newRecipeType;
         this.instructions = newInstructions;
         this.ingredients = newIngredients;
         this.bookmarked = newBookmarked;
@@ -36,21 +37,12 @@ public class Recipe {
 
     }
 
-    // Add note
-//    public void addNote(String note) {
-//        notes.add(note);
-//    }
-
     // Getters
     public String getName() {
         return recipeName;
     }
 
     public int getId() { return id; }
-
-//    public String getRecipeType() {
-//        return recipeType;
-//    }
 
     public String getInstructions() {
         return instructions;
@@ -68,10 +60,6 @@ public class Recipe {
         return servings;
     }
 
-//    public ArrayList<String> getNotes() {
-//        return notes;
-//    }
-
     public String getNote() { return note; }
 
     // Setters
@@ -80,10 +68,6 @@ public class Recipe {
     }
 
     public void setId(int newID) { this.id = newID; }
-
-//    public void setRecipeType(String newRecipeType) {
-//        this.recipeType = newRecipeType;
-//    }
 
     public void setInstructions(String newInstructions) {
         this.instructions = newInstructions;

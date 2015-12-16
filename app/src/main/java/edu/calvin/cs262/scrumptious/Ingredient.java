@@ -1,11 +1,14 @@
-package edu.calvin.cs262.scrumptious;
-
 /**
+ * Ingredient.java
+ *
  * Created by tjluce on 11/6/15.
  *
- * Represents an Ingredient object.  Data for the object should be retrieved from the SQL database.
- * Contains the name and type of the ingredient.
+ * Represents an Ingredient object.
+ * Contains the name and type of the ingredient, along with its id in the database.
  */
+
+package edu.calvin.cs262.scrumptious;
+
 public class Ingredient {
 
     // Data

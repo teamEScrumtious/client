@@ -1,10 +1,18 @@
+/**
+ * AddDish.java
+ *
+ * Created by tjluce on 12/15/15.
+ *
+ * Gets info from the activity that started it and from the user interface and sends that
+ * data to the server to make a new Dish in the database.
+ */
+
 package edu.calvin.cs262.scrumptious;
 
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -15,18 +23,12 @@ import org.joda.time.LocalDate;
 
 import java.util.ArrayList;
 
-/**
- * Created by tjluce on 12/15/15.
- */
 public class AddDish extends Activity implements AsyncResponse<String> {
 
     // Set up variables for accessing RESTful web service
     private static String SERVER_URI = "http://10.0.2.2:9998/scrumptious/";
     private static String DATA_URI = "recipes/addDish/";
     private int asyncTasksReturned = 0;
-    private String webResults = "";
-    private String[] splitWebResults = null;
-    Intent mainIntent;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +41,6 @@ public class AddDish extends Activity implements AsyncResponse<String> {
         // Get the intent and get the recipe data from the intent's extras
         Intent intent = getIntent();
         final int recipeID = intent.getIntExtra("recipeID", -1);
-        final String recipeName = intent.getStringExtra("recipeName");
-        final String recipeInstructions = intent.getStringExtra("recipeInstructions");
-        final int recipeServings = intent.getIntExtra("recipeServings", 0);
-        final boolean recipeBookmarked = intent.getBooleanExtra("recipeBookmarked", false);
 
         // Get views
         final NumberPicker numberPicker = (NumberPicker) findViewById(R.id.numberPicker);
@@ -75,43 +73,45 @@ public class AddDish extends Activity implements AsyncResponse<String> {
         addDishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for(int i = 1; i < 8; i++) {
-                    if (checkBoxList.get(i-1).isChecked()) {
-                        // Set up the current date
-                        LocalDate currentDate = new LocalDate();
+            for(int i = 1; i < 8; i++) {
+                if (checkBoxList.get(i-1).isChecked()) {
+                    // Set up the current date
+                    LocalDate currentDate = new LocalDate();
 
-                        // Get difference in days between days of week (accounts for end/starts of weeks)
-                        int daysToAdd = (currentDate.getDayOfWeek() - i);
-                        if (daysToAdd <= 0) {
-                            daysToAdd = Math.abs(daysToAdd);
-                        } else {
-                            daysToAdd = 7 - daysToAdd;
-                        }
-
-                        // Set up the time for the dish date
-                        LocalDate dishDate = currentDate.plusDays(daysToAdd);
-                        String dishDateTime = dishDate.getYear() + "-" + dishDate.getMonthOfYear() + "-" + dishDate.getDayOfMonth() + " " +
-                                timePicker.getCurrentHour() + ":" + timePicker.getCurrentMinute() + ":00";
-
-                        // Set up and execute the AsyncTask for when the add dish button is pressed
-                        MyAsyncTask asyncTask = new MyAsyncTask(SERVER_URI + DATA_URI);
-                        asyncTask.delegate = AddDish.this;
-                        asyncTask.execute(recipeID + " " + numberPicker.getValue() + " " + dishDateTime);
+                    // Get difference in days between days of week (accounts for end/starts of weeks)
+                    int daysToAdd = (currentDate.getDayOfWeek() - i);
+                    if (daysToAdd <= 0) {
+                        daysToAdd = Math.abs(daysToAdd);
                     } else {
-                        asyncTasksReturned++; // Make sure the count of asyncTasks doesn't get messed up
+                        daysToAdd = 7 - daysToAdd;
+                    }
 
-                        // If all asyncTasks are done
-                        if (asyncTasksReturned == 7) {
-                            // Finish the activity and return to last activity
-                            finish();
-                        }
+                    // Set up the time for the dish date
+                    LocalDate dishDate = currentDate.plusDays(daysToAdd);
+                    String dishDateTime = dishDate.getYear() + "-" + dishDate.getMonthOfYear() + "-" + dishDate.getDayOfMonth() + " " +
+                            timePicker.getCurrentHour() + ":" + timePicker.getCurrentMinute() + ":00";
+
+                    // Set up and execute the AsyncTask for when the add dish button is pressed
+                    MyAsyncTask asyncTask = new MyAsyncTask(SERVER_URI + DATA_URI);
+                    asyncTask.delegate = AddDish.this;
+                    asyncTask.execute(recipeID + " " + numberPicker.getValue() + " " + dishDateTime);
+                } else {
+                    asyncTasksReturned++; // Make sure the count of asyncTasks doesn't get messed up
+
+                    // If all asyncTasks are done
+                    if (asyncTasksReturned == 7) {
+                        // Finish the activity and return to last activity
+                        finish();
                     }
                 }
+            }
             }
         });
 
     }
 
+    // This will receive result fired from async class of onPostExecute(result) method.
+    // This executes after the main thread.
     public void processFinish(String output) {
         //Log.d(Scrumptious.class.getSimpleName(), "webResults: " + output);
 

@@ -1,3 +1,14 @@
+/**
+ * DisplayRecipe.java
+ *
+ * Created by tjluce on 11/23/15.
+ *
+ * Displays a recipe that is passed to it
+ *
+ * NOTE: Do we want the ability to bookmark the recipe from in here too?
+ * Yes, I added a checkbox so can you make it bookmark a recipe? - Lia
+ */
+
 package edu.calvin.cs262.scrumptious;
 
 import android.app.ActionBar;
@@ -11,19 +22,11 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-/**
- * Created by tjluce on 11/23/15.
- *
- * NOTE: Do we want the ability to bookmark the recipe from in here too?
- * Yes, I added a checkbox so can you make it bookmark a recipe? - Lia
- */
 public class DisplayRecipe extends Activity implements AsyncResponse<String> {
 
     // Set up variables for accessing RESTful web service
     private static String SERVER_URI = "http://10.0.2.2:9998/scrumptious/";
     private static String DATA_URI = "recipe/bookmark/";
-    private String webResults = "";
-    private String[] splitWebResults = null;
     int recipeID, recipeServings;
     String recipeName, recipeInstructions;
     boolean recipeBookmarked;
@@ -90,7 +93,6 @@ public class DisplayRecipe extends Activity implements AsyncResponse<String> {
     }
 
     public void processFinish(String output) {
-        Log.d(Scrumptious.class.getSimpleName(), "webResults: " + output);
-        //asyncTask = new MyAsyncTask(SERVER_URI + DATA_URI + recipeID);
+
     }
 }

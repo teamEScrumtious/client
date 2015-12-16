@@ -1,19 +1,21 @@
+/**
+ * Scrumptious.java
+ *
+ * Created by tjluce on 11/9/15.
+ *
+ * Scrumptious sets up global variables for the app and pulls in the weekly plan from the server
+ * This class is only run once, on app start up
+ */
+
 package edu.calvin.cs262.scrumptious;
 
 import android.app.Application;
-import android.os.AsyncTask;
 import android.util.Log;
 
 import net.danlew.android.joda.JodaTimeAndroid;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
-/**
- * Created by tjluce on 11/9/15.
- */
 public class Scrumptious extends Application implements AsyncResponse<String> {
 
     // Create the global arrays of objects

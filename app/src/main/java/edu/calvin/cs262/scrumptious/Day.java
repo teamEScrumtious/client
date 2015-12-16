@@ -1,17 +1,19 @@
+/**
+ * Day.java
+ *
+ * Created by tjluce on 11/10/15.
+ *
+ * Models a day.  A day will contain multiple recipes.  I'm unsure whether we'll be organizing them
+ * by meal, time of day, or some other method, so I'll do meal right now.
+ */
+
 package edu.calvin.cs262.scrumptious;
 
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
-/**
- * Created by tjluce on 11/10/15.
- * Models a day.  A day will contain multiple recipes.  I'm unsure whether we'll be organizing them
- * by meal, time of day, or some other method, so I'll do meal right now.
- */
 public class Day {
 
     // Data

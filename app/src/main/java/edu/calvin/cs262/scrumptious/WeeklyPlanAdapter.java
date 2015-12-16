@@ -1,3 +1,13 @@
+/**
+ * WeeklyPlanAdapter.java
+ *
+ * Created by tjluce on 11/11/15.
+ *
+ * Adapts the dishes in the weekly plan into a expandable list
+ *
+ * Uses code based on http://www.androidhive.info/2013/07/android-expandable-list-view-tutorial/
+ */
+
 package edu.calvin.cs262.scrumptious;
 
 import android.content.Context;
@@ -11,10 +21,6 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Created by tjluce on 11/11/15.
- * Uses code based on http://www.androidhive.info/2013/07/android-expandable-list-view-tutorial/
- */
 public class WeeklyPlanAdapter extends BaseExpandableListAdapter {
     private Context _context;
     private List<String> _listDataHeader; // header titles
