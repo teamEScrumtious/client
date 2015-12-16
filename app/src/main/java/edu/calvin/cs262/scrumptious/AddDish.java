@@ -26,6 +26,7 @@ public class AddDish extends Activity implements AsyncResponse<String> {
     private int asyncTasksReturned = 0;
     private String webResults = "";
     private String[] splitWebResults = null;
+    Intent mainIntent;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +39,10 @@ public class AddDish extends Activity implements AsyncResponse<String> {
         // Get the intent and get the recipe data from the intent's extras
         Intent intent = getIntent();
         final int recipeID = intent.getIntExtra("recipeID", -1);
+        final String recipeName = intent.getStringExtra("recipeName");
+        final String recipeInstructions = intent.getStringExtra("recipeInstructions");
+        final int recipeServings = intent.getIntExtra("recipeServings", 0);
+        final boolean recipeBookmarked = intent.getBooleanExtra("recipeBookmarked", false);
 
         // Get views
         final NumberPicker numberPicker = (NumberPicker) findViewById(R.id.numberPicker);
@@ -114,7 +119,7 @@ public class AddDish extends Activity implements AsyncResponse<String> {
 
         // If all asyncTasks are done
         if (asyncTasksReturned == 7) {
-            // Finish the activity and return to last activity
+            // Finish the activity and return to last activity while passing back data
             this.finish();
         }
     }

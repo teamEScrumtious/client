@@ -24,6 +24,9 @@ public class DisplayRecipe extends Activity implements AsyncResponse<String> {
     private static String DATA_URI = "recipe/bookmark/";
     private String webResults = "";
     private String[] splitWebResults = null;
+    int recipeID, recipeServings;
+    String recipeName, recipeInstructions;
+    boolean recipeBookmarked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +39,11 @@ public class DisplayRecipe extends Activity implements AsyncResponse<String> {
 
         // Get the intent and get the recipe data from the intent's extras
         Intent intent = getIntent();
-        final int recipeID = intent.getIntExtra("recipeID", -1);
-        final String recipeName = intent.getStringExtra("recipeName");
-        final String recipeInstructions = intent.getStringExtra("recipeInstructions");
-        final int recipeServings = intent.getIntExtra("recipeServings", 0);
-        final boolean recipeBookmarked = intent.getBooleanExtra("recipeBookmarked", false);
+        recipeID = intent.getIntExtra("recipeID", -1);
+        recipeName = intent.getStringExtra("recipeName");
+        recipeInstructions = intent.getStringExtra("recipeInstructions");
+        recipeServings = intent.getIntExtra("recipeServings", 0);
+        recipeBookmarked = intent.getBooleanExtra("recipeBookmarked", false);
 
         // Get the fields from the xml layout and set them with the data received from the intent
         TextView tvRecipeName = (TextView) findViewById(R.id.tvRecipeName);
@@ -80,6 +83,7 @@ public class DisplayRecipe extends Activity implements AsyncResponse<String> {
                 intent.putExtra("recipeServings", recipeServings);
                 intent.putExtra("recipeBookmakred", recipeBookmarked);
                 startActivity(intent);
+                finish();
             }
         });
 
