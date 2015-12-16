@@ -32,7 +32,7 @@ public class Dish {
             DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss.SSS");
             date = formatter.parseDateTime(newDate);
         }catch(Exception e){
-            Log.d(Scrumptious.class.getSimpleName(), e.toString());
+            //Log.d(Scrumptious.class.getSimpleName(), e.toString());
         }
     }
 

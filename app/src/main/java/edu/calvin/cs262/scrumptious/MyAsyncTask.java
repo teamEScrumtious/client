@@ -101,10 +101,10 @@ public class MyAsyncTask extends AsyncTask<String, Void, String> {
 
             HttpEntity entity = response.getEntity();
             text = getASCIIContentFromEntity(entity);
-            Log.d(Scrumptious.class.getSimpleName(), "Received data from server at address " + URI);
-            Log.d(Scrumptious.class.getSimpleName(), "Data received is:\n" + text);
+            //Log.d(Scrumptious.class.getSimpleName(), "Received data from server at address " + URI);
+            //Log.d(Scrumptious.class.getSimpleName(), "Data received is:\n" + text);
         } catch (Exception e) {
-            Log.d(Scrumptious.class.getSimpleName(), "Failed to retrieve data from the server.");
+            //Log.d(Scrumptious.class.getSimpleName(), "Failed to retrieve data from the server.");
             return e.getLocalizedMessage();
         }
         return text;

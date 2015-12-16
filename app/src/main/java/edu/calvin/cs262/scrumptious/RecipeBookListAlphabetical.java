@@ -76,7 +76,7 @@ public class RecipeBookListAlphabetical extends Activity implements AsyncRespons
     // This executes after the main thread.
     public void processFinish(String output) {
         webResults = output;
-        Log.d(Scrumptious.class.getSimpleName(), "webResults: " + webResults);
+        //Log.d(Scrumptious.class.getSimpleName(), "webResults: " + webResults);
 
         // Split the server data's individual lines into separate strings
         //String[] splitWebResults = null;
