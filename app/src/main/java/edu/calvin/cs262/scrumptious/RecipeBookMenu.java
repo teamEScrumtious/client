@@ -1,18 +1,18 @@
 /**
- * RecipeBookListAlphabetical.java
+ * RecipeBookMenu.java
  *
- * Choose how to view recipies
+ * Choose how to view the recipes
  * -alphabetically - RecipeBookListAlphabetical.java
+ * -bookmarked - RecipeBookListBookmarked.java
+ * -recents - RecipeBookListRecent.java
  *
- * [UNDER CONSTRUCTION]
  */
 package edu.calvin.cs262.scrumptious;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 public class RecipeBookMenu extends Activity {
@@ -21,33 +21,27 @@ public class RecipeBookMenu extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_book_menu);
+
+        // Change the title
+        ActionBar ab = getActionBar();
+        ab.setTitle("                                           ");
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_recipe_book_menu, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
-
 //go to Recipe Book List Alphabetical menu, where recipes are listed alphabetically...
-    public void startRecipeBookMenu(View view){
+    public void startRecipeBookAlphabetical(View view){
         Intent intent = new Intent(RecipeBookMenu.this, RecipeBookListAlphabetical.class);
         startActivity(intent);
+    }
+
+    //go to Recipe Book List Alphabetical menu, where recipes are listed alphabetically...
+    public void startRecipeBookBookmarked(View view){
+//        Intent intent = new Intent(RecipeBookMenu.this, RecipeBookListBookmarked.class);
+//        startActivity(intent);
+    }
+
+    //go to Recipe Book List Alphabetical menu, where recipes are listed alphabetically...
+    public void startRecipeBookRecent(View view){
+//        Intent intent = new Intent(RecipeBookMenu.this, RecipeBookListRecent.class);
+//        startActivity(intent);
     }
 }

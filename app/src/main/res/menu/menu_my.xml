@@ -5,7 +5,14 @@
         <!--android:title="@string/action_search"-->
         <!--android:showAsAction="ifRoom" />-->
     <!-- Settings, should always be in the overflow -->
-    <item android:id="@+id/action_settings"
+
+    <!--<item android:id="@+id/action_settings"
         android:title="@string/action_settings"
-        android:showAsAction="never" />
+        android:showAsAction="never" /> -->
+
+    <item android:id="@+id/action_help"
+        android:title="Help"
+        android:showAsAction="always" />
+
+
 </menu>

@@ -1,3 +1,11 @@
+/**
+ * ShoppingListAdapter.java
+ *
+ * Created by tjluce on 11/18/15.
+ *
+ * Adapts ingredients to be displayed in expandable lists
+ */
+
 package edu.calvin.cs262.scrumptious;
 
 import android.content.Context;
@@ -11,9 +19,6 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Created by tjluce on 11/18/15.
- */
 public class ShoppingListAdapter extends BaseExpandableListAdapter {
     private Context _context;
     private List<String> _listDataHeader; // header titles

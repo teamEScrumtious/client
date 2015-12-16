@@ -1,85 +1,61 @@
+/**
+ * WeekPlan.java
+ *
+ * Created by tjluce on 11/10/15.
+ *
+ * Models a week plan.  The week plan uses a list of dishes and figures out what day it needs to put it in.
+ * The week is modeled as a list of Day objects.
+ */
+
 package edu.calvin.cs262.scrumptious;
+
+import org.joda.time.DateTime;
+import org.joda.time.Days;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by tjluce on 11/10/15.
- */
 public class WeekPlan {
+
     // Data
-    private Day Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday;
+    private ArrayList<Day> dayList = new ArrayList<Day>();
 
     // Constructor
-    public WeekPlan() {
+    public WeekPlan(ArrayList<Dish> newDishes) {
+        DateTime localDate = new DateTime();
+        ArrayList<Dish> dishes = newDishes;
+
+        // Add new Day objects for the next seven days to the object
+        for(int i = 0; i < 7; i++) {
+            dayList.add(new Day(localDate.getMonthOfYear(), localDate.getDayOfMonth(), localDate.getYear()));
+            localDate = localDate.plusDays(1);
+        }
+
+        // Reset the calendar to today
+        localDate = localDate.plusDays(-7);
+
+        // Loop through each dish and put it in the correct day
+        for(int i = 0; i < dishes.size(); i++) {
+            DateTime dishDate = dishes.get(i).getDate();
+
+            int dateDifference = Days.daysBetween(localDate.toLocalDate(), dishDate.toLocalDate()).getDays();
+            // Only add the dish if it's within the current week...
+            if (dateDifference >= 0 && dateDifference < 7) {
+                dayList.get(dateDifference).addDish(dishes.get(i));
+            }
+        }
     }
 
     // Getters and Setters
     public List<Day> getDayList() {
-        List<Day> dayList = new ArrayList<Day>();
-        dayList.add(Sunday);
-        dayList.add(Monday);
-        dayList.add(Tuesday);
-        dayList.add(Wednesday);
-        dayList.add(Thursday);
-        dayList.add(Friday);
-        dayList.add(Saturday);
         return dayList;
     }
 
-    public Day getSunday() {
-        return Sunday;
-    }
-
-    public void setSunday(Day sunday) {
-        Sunday = sunday;
-    }
-
-    public Day getMonday() {
-        return Monday;
-    }
-
-    public void setMonday(Day monday) {
-        Monday = monday;
-    }
-
-    public Day getTuesday() {
-        return Tuesday;
-    }
-
-    public void setTuesday(Day tueday) {
-        Tuesday = tueday;
-    }
-
-    public Day getWednesday() {
-        return Wednesday;
-    }
-
-    public void setWednesday(Day wednesday) {
-        Wednesday = wednesday;
-    }
-
-    public Day getThursday() {
-        return Thursday;
-    }
-
-    public void setThursday(Day thursday) {
-        Thursday = thursday;
-    }
-
-    public Day getFriday() {
-        return Friday;
-    }
-
-    public void setFriday(Day friday) {
-        Friday = friday;
-    }
-
-    public Day getSaturday() {
-        return Saturday;
-    }
-
-    public void setSaturday(Day saturday) {
-        Saturday = saturday;
+    public Day getDay(int index) {
+        if (index >= 0 && index < dayList.size()) {
+            return dayList.get(index);
+        } else {
+            throw new IndexOutOfBoundsException();
+        }
     }
 }
