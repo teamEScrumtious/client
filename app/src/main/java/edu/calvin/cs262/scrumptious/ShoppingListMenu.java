@@ -1,7 +1,8 @@
 /**
  * ShoppingListMenu.java
- * <p/>
- * Displays shopping list, populated by recipies, via check boxes.
+ *
+ * Displays the shopping list populated by the weekly plan, with each ingredient under an expandable
+ * list corresponding to its type and with all identical ingredients merged into one quantity
  */
 
 package edu.calvin.cs262.scrumptious;
@@ -9,7 +10,6 @@ package edu.calvin.cs262.scrumptious;
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.app.Activity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;

@@ -20,9 +20,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 public class RecipeBookListAlphabetical extends Activity implements AsyncResponse<String> {
 
@@ -75,6 +72,8 @@ public class RecipeBookListAlphabetical extends Activity implements AsyncRespons
         }
     }
 
+    // This will receive result fired from async class of onPostExecute(result) method.
+    // This executes after the main thread.
     public void processFinish(String output) {
         webResults = output;
         Log.d(Scrumptious.class.getSimpleName(), "webResults: " + webResults);

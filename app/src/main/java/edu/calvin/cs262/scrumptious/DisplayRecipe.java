@@ -1,3 +1,14 @@
+/**
+ * DisplayRecipe.java
+ *
+ * Created by tjluce on 11/23/15.
+ *
+ * Displays a recipe that is passed to it
+ *
+ * NOTE: Do we want the ability to bookmark the recipe from in here too?
+ * Yes, I added a checkbox so can you make it bookmark a recipe? - Lia
+ */
+
 package edu.calvin.cs262.scrumptious;
 
 import android.app.ActionBar;
@@ -11,19 +22,14 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-/**
- * Created by tjluce on 11/23/15.
- *
- * NOTE: Do we want the ability to bookmark the recipe from in here too?
- * Yes, I added a checkbox so can you make it bookmark a recipe? - Lia
- */
 public class DisplayRecipe extends Activity implements AsyncResponse<String> {
 
     // Set up variables for accessing RESTful web service
     private static String SERVER_URI = "http://10.0.2.2:9998/scrumptious/";
     private static String DATA_URI = "recipe/bookmark/";
-    private String webResults = "";
-    private String[] splitWebResults = null;
+    int recipeID, recipeServings;
+    String recipeName, recipeInstructions;
+    boolean recipeBookmarked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +42,11 @@ public class DisplayRecipe extends Activity implements AsyncResponse<String> {
 
         // Get the intent and get the recipe data from the intent's extras
         Intent intent = getIntent();
-        final int recipeID = intent.getIntExtra("recipeID", -1);
-        final String recipeName = intent.getStringExtra("recipeName");
-        final String recipeInstructions = intent.getStringExtra("recipeInstructions");
-        final int recipeServings = intent.getIntExtra("recipeServings", 0);
-        final boolean recipeBookmarked = intent.getBooleanExtra("recipeBookmarked", false);
+        recipeID = intent.getIntExtra("recipeID", -1);
+        recipeName = intent.getStringExtra("recipeName");
+        recipeInstructions = intent.getStringExtra("recipeInstructions");
+        recipeServings = intent.getIntExtra("recipeServings", 0);
+        recipeBookmarked = intent.getBooleanExtra("recipeBookmarked", false);
 
         // Get the fields from the xml layout and set them with the data received from the intent
         TextView tvRecipeName = (TextView) findViewById(R.id.tvRecipeName);
@@ -80,13 +86,13 @@ public class DisplayRecipe extends Activity implements AsyncResponse<String> {
                 intent.putExtra("recipeServings", recipeServings);
                 intent.putExtra("recipeBookmakred", recipeBookmarked);
                 startActivity(intent);
+                finish();
             }
         });
 
     }
 
     public void processFinish(String output) {
-        Log.d(Scrumptious.class.getSimpleName(), "webResults: " + output);
-        //asyncTask = new MyAsyncTask(SERVER_URI + DATA_URI + recipeID);
+
     }
 }

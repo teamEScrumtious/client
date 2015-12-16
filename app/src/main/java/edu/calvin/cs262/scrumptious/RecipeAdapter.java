@@ -1,7 +1,16 @@
+/**
+ * RecipeAdapter.java
+ *
+ * Created by tjluce on 11/4/15.
+ *
+ * RecipeAdapter adapts an array of Recipes to be displayed in a ListView
+ *
+ * Used tutorial at https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView
+ */
+
 package edu.calvin.cs262.scrumptious;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +19,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by tjluce on 11/4/15.
- * RecipeAdapter adapts an array of Recipes to be displayed in a ListView
- *
- * Used tutorial at https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView
- */
 public class RecipeAdapter extends ArrayAdapter<Recipe> {
     public RecipeAdapter(Context context, ArrayList<Recipe> recipes) {
         super(context, 0, recipes);

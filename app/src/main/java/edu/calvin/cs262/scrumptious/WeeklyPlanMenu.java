@@ -1,9 +1,7 @@
 /**
  * WeeklyPlanMenu.java
  *
- * Display weekly recipies.. possibly by days or other time periods..
- *
- * [UNDER CONSTRUCTION]
+ * Get the recipies for the week and display them under each day
  *
  * Adapted code from http://www.androidhive.info/2013/07/android-expandable-list-view-tutorial/
  */
@@ -20,13 +18,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.ExpandableListView.OnChildClickListener;
-import android.widget.ExpandableListView.OnGroupClickListener;
-import android.widget.ExpandableListView.OnGroupCollapseListener;
-import android.widget.ExpandableListView.OnGroupExpandListener;
 
 public class WeeklyPlanMenu extends Activity implements AsyncResponse<String> {
 
@@ -45,11 +38,10 @@ public class WeeklyPlanMenu extends Activity implements AsyncResponse<String> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weekly_plan_menu);
-        //getActionBar().setDisplayHomeAsUpEnabled(true);
-
-        weekPlan = (((Scrumptious)getApplicationContext()).weekPlan);
 
         // Recalculate week plan
+        weekPlan = (((Scrumptious)getApplicationContext()).weekPlan);
+
         // Set up the thread that retreives data from the server
         MyAsyncTask asyncTask = new MyAsyncTask(SERVER_URI + DATA_URI);
 
@@ -57,7 +49,6 @@ public class WeeklyPlanMenu extends Activity implements AsyncResponse<String> {
 
         // Execute asyncTask and wait for it to return
         asyncTask.execute();
-        //((Scrumptious) getApplicationContext()).calculateWeekPlan();
 
         // Change the title
         ActionBar ab = getActionBar();
@@ -66,70 +57,10 @@ public class WeeklyPlanMenu extends Activity implements AsyncResponse<String> {
         // get the listview
         expListView = (ExpandableListView) findViewById(R.id.expandableListView);
 
-//        // preparing list data
-//        prepareListData();
-//
-//        listAdapter = new WeeklyPlanAdapter(this, listDataHeader, listDataChild);
-//
-//        // setting list adapter
-//        expListView.setAdapter(listAdapter);
-//
-//        // Listview Group click listener
-//        expListView.setOnGroupClickListener(new OnGroupClickListener() {
-//
-//            @Override
-//            public boolean onGroupClick(ExpandableListView parent, View v,
-//                                        int groupPosition, long id) {
-//                // Toast.makeText(getApplicationContext(),
-//                // "Group Clicked " + listDataHeader.get(groupPosition),
-//                // Toast.LENGTH_SHORT).show();
-//                return false;
-//            }
-//        });
-//
-//        // Listview Group expanded listener
-//        expListView.setOnGroupExpandListener(new OnGroupExpandListener() {
-//
-//            @Override
-//            public void onGroupExpand(int groupPosition) {
-////                Toast.makeText(getApplicationContext(),
-////                        listDataHeader.get(groupPosition) + " Expanded",
-////                        Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        // Listview Group collasped listener
-//        expListView.setOnGroupCollapseListener(new OnGroupCollapseListener() {
-//
-//            @Override
-//            public void onGroupCollapse(int groupPosition) {
-////                Toast.makeText(getApplicationContext(),
-////                        listDataHeader.get(groupPosition) + " Collapsed",
-////                        Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
-//
-//        // Listview on child click listener
-//        expListView.setOnChildClickListener(new OnChildClickListener() {
-//
-//            @Override
-//            public boolean onChildClick(ExpandableListView parent, View v,
-//                                        int groupPosition, int childPosition, long id) {
-//                // TODO Auto-generated method stub
-////                Toast.makeText(
-////                        getApplicationContext(),
-////                        listDataHeader.get(groupPosition)
-////                                + " : "
-////                                + listDataChild.get(
-////                                listDataHeader.get(groupPosition)).get(
-////                                childPosition), Toast.LENGTH_SHORT)
-////                        .show();
-//                return false;
-//            }
-//        });
     }
 
+    // This will receive result fired from async class of onPostExecute(result) method.
+    // This executes after the main thread.
     public void processFinish(String output) {
 
         webResults = output;
@@ -240,17 +171,6 @@ public class WeeklyPlanMenu extends Activity implements AsyncResponse<String> {
                         }
                     }
                 }
-
-                // This stuff is unneccessary for now, possibly ever
-
-//                String[] numberSplitWebResults = null;
-//
-//                Log.d(Scrumptious.class.getSimpleName(), "splitWebResults: " + splitWebResults[i]);
-//
-//                // Get only the number of the recipe (it should be at an index of 0
-//                // Note: Testing for numbers with more than 1 digits have not happened yet
-//                numberSplitWebResults = splitWebResults[i].split("\\D");
-//                //Log.d(Scrumptious.class.getSimpleName(), "numberSplitWebResults: " + numberSplitWebResults[0]);
             }
         }
 

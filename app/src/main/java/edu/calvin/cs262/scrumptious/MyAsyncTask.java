@@ -1,3 +1,14 @@
+/**
+ * MyAsncTask.java
+ *
+ * Created by tjluce on 12/14/15.
+ *
+ * MyAsyncTask is a asynchronous task that handles HTTP calls to the server and returns the results
+ * with the help of the AsyncResponse
+ *
+ * Uses http://stackoverflow.com/questions/12575068/how-to-get-the-result-of-onpostexecute-to-main-activity-because-asynctask-is-a
+ */
+
 package edu.calvin.cs262.scrumptious;
 
 import android.os.AsyncTask;
@@ -7,13 +18,10 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 
@@ -22,10 +30,6 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
-/**
- * Created by tjluce on 12/14/15.
- * Uses http://stackoverflow.com/questions/12575068/how-to-get-the-result-of-onpostexecute-to-main-activity-because-asynctask-is-a
- */
 public class MyAsyncTask extends AsyncTask<String, Void, String> {
     public AsyncResponse delegate=null;
     private String URI = "";
