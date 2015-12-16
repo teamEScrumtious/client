@@ -58,13 +58,13 @@ public class RecipeBookMenu extends Activity {
 
     //go to Recipe Book List Alphabetical menu, where recipes are listed alphabetically...
     public void startRecipeBookBookmarked(View view){
-        Intent intent = new Intent(RecipeBookMenu.this, RecipeBookListBookmarked.class);
-        startActivity(intent);
+//        Intent intent = new Intent(RecipeBookMenu.this, RecipeBookListBookmarked.class);
+//        startActivity(intent);
     }
 
     //go to Recipe Book List Alphabetical menu, where recipes are listed alphabetically...
     public void startRecipeBookRecent(View view){
-        Intent intent = new Intent(RecipeBookMenu.this, RecipeBookListRecent.class);
-        startActivity(intent);
+//        Intent intent = new Intent(RecipeBookMenu.this, RecipeBookListRecent.class);
+//        startActivity(intent);
     }
 }

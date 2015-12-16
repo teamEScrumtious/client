@@ -13,7 +13,7 @@ public class IngredientQuantity {
     private Ingredient ingredient;
     private int id;
     private String unit;
-    private double quantity;
+    private float quantity;
 
     // Constructor
     public IngredientQuantity(Ingredient ingredient, int newID, String unit, float quantity) {
@@ -48,11 +48,11 @@ public class IngredientQuantity {
         this.unit = unit;
     }
 
-    public double getQuantity() {
+    public float getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(double quantity) {
+    public void setQuantity(float quantity) {
         this.quantity = quantity;
     }
 }

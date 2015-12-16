@@ -256,6 +256,7 @@ public class WeeklyPlanMenu extends Activity implements AsyncResponse<String> {
 
         //Create the Week Plan
         weekPlan = new WeekPlan(arrayOfDishes);
+        (((Scrumptious)getApplicationContext()).weekPlan) = weekPlan;
 
         // Set up the list
 

@@ -9,6 +9,7 @@ package edu.calvin.cs262.scrumptious;
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
@@ -110,22 +111,23 @@ public class ShoppingListMenu extends Activity {
         WeekPlan weekPlan = (((Scrumptious) getApplicationContext()).weekPlan);
 
         // Data to be used for looping
-        List<Day> dayList = weekPlan.getDayList();
+        List<Day> dayList = new ArrayList<Day>(weekPlan.getDayList());
         List<Dish> dishList;
         List<IngredientQuantity> ingredientList;
+        IngredientQuantity ingredientToAdd;
 
         // Loop through every day and find every ingredient, and if it has a new type then add it to the header list
         for (int i = 0; i < dayList.size(); i++) {
-            dishList = dayList.get(i).getDishList();
+            dishList = new ArrayList<Dish>(dayList.get(i).getDishList());
             // Looping through dishes in the current day
             for (int j = 0; j < dishList.size(); j++) {
-                ingredientList = dishList.get(j).getRecipe().getIngredients();
+                ingredientList = new ArrayList<IngredientQuantity>(dishList.get(j).getRecipe().getIngredients());
                 // Looping through ingredients in the current dish
                 for (int k = 0; k < ingredientList.size(); k++) {
                     //if the ingredient type matches any current categories ("listDataHeader" or alternatively "listDataChild.containsKey")
                     if (listDataChild.containsKey(ingredientList.get(k).getIngredient().getType())) {
                         /** create temp list copy of listDataChild's appropriate list, which is the value to the key found above **/
-                        List<IngredientQuantity> tempChildList = listDataChild.get((ingredientList.get(k).getIngredient().getType()));
+                        List<IngredientQuantity> tempChildList = new ArrayList<IngredientQuantity>(listDataChild.get((ingredientList.get(k).getIngredient().getType())));
                         boolean searchSucceeded = false;
                         /** Search through temp list for matching name **/
                         for (int h = 0; h < tempChildList.size(); h++) {
@@ -141,14 +143,16 @@ public class ShoppingListMenu extends Activity {
                         /** if the search didn't find a matching name, searchSucceeded will still be false **/
                         if (!searchSucceeded) {
                             //The category existed but there were no matching ingredients by that name, so make a new one.
-                            listDataChild.get(ingredientList.get(k).getIngredient().getType()).add(ingredientList.get(k));
+                            ingredientToAdd = ingredientList.get(k);
+                            listDataChild.get(ingredientList.get(k).getIngredient().getType()).add(new IngredientQuantity(ingredientToAdd.getIngredient(), ingredientToAdd.getId(), ingredientToAdd.getUnit(), ingredientToAdd.getQuantity()));
                         }
                     } else {
                         //No category matches the current ingredient type, so make a new category and add the ingredient to it.
                         listDataHeader.add(ingredientList.get(k).getIngredient().getType());
                         // Also add in a new arraylist for the child data list to use (corresponds to the list just added for the header data list)
                         listDataChild.put(ingredientList.get(k).getIngredient().getType(), new ArrayList<IngredientQuantity>());
-                        listDataChild.get(ingredientList.get(k).getIngredient().getType()).add(ingredientList.get(k));
+                        ingredientToAdd = ingredientList.get(k);
+                        listDataChild.get(ingredientList.get(k).getIngredient().getType()).add(new IngredientQuantity(ingredientToAdd.getIngredient(), ingredientToAdd.getId(), ingredientToAdd.getUnit(), ingredientToAdd.getQuantity()));
                     }
 
                 }
